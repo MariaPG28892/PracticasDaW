@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página web Club deportivo TriSport</title>
+    <!--Enlazamos el css-->
+    <link rel="stylesheet" href="Estilo/estilos.css" media="screen">
+</head>
+<body>
+    <!--Añadimos un enlace donde nos dirija al contenido principal siendo en este caso el main-->
+    <a href="#contenidoPrincipal" class="ocultar">Ir al contenido principal</a>
+    <!--CABECERA-->
+    <header id="cabecera">
+        <div class="logo">
+            <!--Usamos aria-label en enlaces para describirlos y alt en imágenes para describir la imágen que estamos insertando-->
+            <a href="index_MPG.html" aria-label="Enlace a la página principal"><img src="Imagenes/logo.png" alt="Logo distintivo del club deportivo TriSport, con los tres deportes: Atletismo, kárate y natación"></a>
+            <h1>TRISPORT CLUB</h1>
+        </div>
+        <div class="datosCabecera">
+            <!--De nuevo usamos aria-label para los enlaces y alt para las imágenes-->
+            <a href="" class="contacto_cabecera" aria-label="Enlace a contactar con la página por número de teléfono">943554332</a>
+            <img src="Imagenes/telefono.png" alt="logo de teléfono para acceder a llamada telefónica con el club">
+            <a href="" class="contacto_cabecera" aria-label="Enlace para contactar con soporte">Soporte</a>
+            <img src="Imagenes/soporte.png" alt="logo de internet para acceder a las opciones de soporte de la página" >
+            <a href="" class="contacto_cabecera" aria-label="Enlace para iniciar sesión">Iniciar Sesión</a>
+            <img src="Imagenes/login.png" alt="logo para acceder al login de la cuenta de usuario" >
+        </div>
+    </header>
+    <!--NAVEGADOR-->
+    <nav>
+        <!-- Menú hamburguesa -->
+        <input type="checkbox" id="menu_hamburguesa" class="menu_hamburguesa" aria-hidden="true">
+        <!--tabindex para que se seleccione de forma ordenada, le hemos puesto un for relacionar el menu con su etiqueta, le asignamos 
+        una tecla rápida con accesskey -->
+        <label id="label_menu_hamburguesa" for="menu_hamburguesa" class="icono_hamburguesa" tabindex="1" 
+        aria-label="Menú de navegación" aria-controls="menu" aria-expanded="false" accesskey="m">
+            <img src="Imagenes/menuHamburguesa.png" alt="Icono de hamburguesa para abrir el menú de navegación" class="imagenHamburguesa">
+            <!--Texto visible solo para los lectores de pantalla-->
+            <span class="ocultar">Menú de navegación</span>
+        </label>
+
+        <!-- Menú de navegación -->
+        <ul class="menu_principal" id="menu_principal" aria-label="Enlaces menú de navegación">
+            <!--A los elementos principales del menú le he asignado teclas rápidas, en este primero como no tiene nada asignado le 
+            añadimos index para que nos lleve a la misma página- En todos los demás he incluido las páginas corresponidentes y con
+            aria label he descrito donde nos llevarían. He usado target="_blank" para que abra nuevas páginas cuando le damos a los enlaces-->
+            <li><a href="index_MPG.html" aria-label="enlace para ir a la sección club" accesskey="c">Club</a>
+                <ul>
+                    <li><a href="https://www.funkify.org/simulators/" aria-label="Enlace para ir a la historia del club" target="_blank">Historia</a></li>
+                    <li><a href="https://www.deque.com/axe/" aria-label="Enlace para ir a la sección socios" target="_blank">Socios</a></li>
+                </ul>
+            </li>
+
+            <li><a href="index_MPG.html" aria-label="Enlace para ir a las noticias" accesskey="n">Noticias</a>
+                <ul>
+                    <li><a href="https://diegoamorin.com/principios-usabilidad-tognazzini/" aria-label="Enlace para ir a las ultimas noticias" target="_blank">Últimas noticias</a></li>
+                    <li><a href="https://es.semrush.com/blog/usabilidad-web-principios-jakob-nielsen/" aria-label="Enlace para ir a la revista" target="_blank">Revista</a></li>
+                </ul>
+            </li>
+
+            <li><a href="index_MPG.html" aria-label="Enlace para ir a la sección secciones" accesskey="s">Secciones</a>
+                <ul>
+                    <li><a href="https://fastercapital.com/es/palabra-clave/navegaci%C3%B3n-consistente.html" aria-label="enlace para atletismo" target="_blank">Atletismo</a></li>
+                    <li><a href="https://keepcoding.io/blog/persistencia-de-datos-en-el-navegador/" aria-label="enlace para natación" target="_blank">Natación</a></li>
+                    <li><a href="https://es.wikipedia.org/wiki/Karate" aria-label="enlace para kárate" target="_blank">Kárate</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- Script para cambiar el estado del menú hamburguesa, para que se abra cuando pulsamos la imagen de este.-->
+    <script>
+        document.getElementById('label_menu_hamburguesa').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+            event.preventDefault(); // Prevenir el comportamiento por defecto
+            document.getElementById('menu_hamburguesa').click(); 
+        }
+        });
+    </script>
+    <!--MAIN-->
+    <main  id="contenidoPrincipal" class="contenido">
+        <!--He divido el main en secciones, cada sección tiene un id, pertenece a la class zonaContenido y tiene tabindex 0, esto lo hacemos
+        para poderlo enlazar con el aside y que cuando le de focus, con la class podemos darle a todos el mismo estilo-->
+        <!--SECCIÓN NOTICIAS-->
+        <section id="noticias" class="zonaContenido" tabindex="0">
+            <h3 class="tituloSecciones">NOTICIAS</h3>
+            <!--Cada noticia la he metido en un div y la he estructurado con titulo, parrafos y fotos.-->
+            <div class="noticia1">
+                <h4 class="tituloNoticia">Carles Coll bate el récord de España en 100 metros estilos en piscina corta</h4>
+                <p class="parrafo1">
+                    El español Carles Coll ha accedido este jueves a la final masculina de 100 metros 
+                    estilos en el Campeonato del Mundo de natación en piscina corta, que se está  
+                    disputando en Budapest (Hungría), gracias a su registro en meta de 51.50 para 
+                    establecer un nuevo récord de España.
+                </p>
+
+                <p class="parrafo2">
+                    Tras su nuevo récord nacional, Coll nadará la final de este viernes por la calle 
+                    nº 6, habiendo firmado la cuarta marca de los competidores. En su camino hacia 
+                    la prueba definitiva por el podio, el tarraconense ya se había visto las caras 
+                    con el suizo Noè Ponti, que en su 'semi' batió el récord de los campeonatos (50.43) 
+                    y partirá como favorito al oro.
+                </p>
+                <!--He usado alt para describir las imágenes.-->
+                <img src="Imagenes/noticia1.png" alt="Carles Coll en la competición de Copenhague." class="imagenNoticia1">
+                <img src="Imagenes/noticia1.2..png" alt="Carles Coll recibiendo la medalla de oro por ganar 100m" class="imagenNoticia2">
+                <p class="parrafo3">Autor: 20minutos.es || Fecha: 12.12.2024.</p>
+            </div>
+            <div class="noticia2">
+                <h4 class="tituloNoticia">Despedida de Damián Quintero en los Mundiales de Kárate 2024</h4>
+                <p class="parrafo1">
+                    Damián Quintero, subcampeón olímpico en Tokio, que lleva toda una vida encima del podio, 
+                    se despidió de España con un bronce en los Mundiales por equipos de Pamplona. 
+                    Un adiós (casi) a la altura del mejor karateca de todos los tiempos, tal y como le condecoró 
+                    la propia Federación Internacional.
+                </p>
+
+                <p class="parrafo2">
+                    La despedida de Quintero, que estuvo muy arropado por los suyos, “con un público muy especial que 
+                    hace sentir la energía y el calor”. 
+                    En cuartos, China tampoco fue rival. En semifinales, sin embargo, tal y como estaba previsto, 
+                    llegaron los problemas. Japón, a la postre campeona, fue demasiado. 
+                    “Hay que ir a ganarlo todo. Queremos ir a por el oro”, decía, en la previa, Damián.
+                </p>
+                <img src="Imagenes/noticia2.png" alt="Damián Quintero en la competición de Tokio de Kárate" class="imagenNoticia1">
+                <img src="Imagenes/noticia2.2..png" alt="Damian Quintero recibiendo la medalla de bronce ganada en la competición de Tokio" class="imagenNoticia2">
+                <p class="parrafo3">Autor: Albert Sancho. || Fecha: 24 de noviembre 2024.</p>
+            </div>
+        </section>
+        <!--SECCIÓN SECCIONES-->
+        <section id="secciones" class="zonaContenido" tabindex="0">
+            <h3 class="tituloSecciones">SECCIÓN DE DEPORTES</h3>
+                <!--Lo he hecho todo en un div y luego cada deporte en div individuales.-->
+                <div class="imagenesDeportes">
+                    <div>
+                        <a href="https://es.wikipedia.org/wiki/Atletismo" aria-label="Enlace para ir a la sección de atletismo" target="_blank">
+                            <img src="Imagenes/atletismo.jpg" alt="Enlace para acceder a la sección de atletismo">
+                        </a>
+                        <h4>ATLETISMO</h4>
+                    </div>
+
+                    <div>
+                        <a href="https://es.wikipedia.org/wiki/Karate" aria-label="Enlace para ir a la sección de kárate" target="_blank">
+                            <img src="Imagenes/karate.jpg" alt="Enlace para acceder a la sección de kárate">
+                        </a>
+                        <h4>KÁRATE</h4>
+                    </div>
+
+                    <div>
+                        <a href="https://es.wikipedia.org/wiki/Nataci%C3%B3n"  aria-label="Enlace para ir a la sección de natación" target="_blank">
+                            <img src="Imagenes/natacion.jpg" alt="Enlace para acceder a la sección de natación">
+                        </a>
+                        <h4>NATACIÓN</h4>
+                    </div>
+                </div>
+        </section>
+        <!--SECCIÓN DE OPINIONES-->
+        <section id="opiniones" class="zonaContenido" tabindex="0">
+            <h3 class="tituloOpiniones">OPINIONES DE LOS USUARIOS</h3>
+            <!--Lo he dividido en div cada opinión, y dentro los elementos, describiendo con alt las imágenes-->
+            <!-- Opinión 1 -->
+            <div class="opinion1">
+                <div class="contenido_perfil">
+                    <img src="Imagenes/perfil1.jpg" alt="Imagen de perfil del usuario" class="imagen_perfil">
+                    <p class="nombreOpinion">Rubén López</p>
+                    <p class="fechaOpinion">06/01/2025 - 20:26</p>
+                </div>
+                <div class="contenido_opinion">
+                    <p class="deporteOpinion">ATLETISMO</p>
+                    <p> Organización de las clases muy buena y un profesor muy comprometido. Una carrera muy desafiante para comenzar la aventura. Seguiré en este club.</p>
+                    <p class="idiomaOpinion" lang="es">Español-ESP</p>
+                </div>
+            </div>
+            
+            <!-- Opinión 2 -->
+            <div class="opinion2">
+                <div class="contenido_perfil">
+                    <img src="Imagenes/perfil2.jpg" alt="Imagen de perfil del usuario" class="imagen_perfil">
+                    <p class="nombreOpinion">Mike Powter</p>
+                    <p class="fechaOpinion">07/01/2025 - 12:32</p>
+                </div>
+                <div class="contenido_opinion">
+                    <p class="deporteOpinion">KÁRATE</p>
+                    <p>The karate classes are amazing! The instructors are very skilled and create a supportive environment. I’ve already improved my techniques and feel more confident with every session.</p>
+                    <p class="idiomaOpinion" lang="en">English-USA</p>
+                </div>
+            </div>
+            
+            <!-- Opinión 3 -->
+            <div class="opinion3">
+                <div class="contenido_perfil">
+                    <img src="Imagenes/perfil3.jpg" alt="Imagen de perfil del usuario" class="imagen_perfil">
+                    <p class="nombreOpinion">Luna Ortega</p>
+                    <p class="fechaOpinion"> 15/01/2025 - 21:03</p>
+                </div>
+                <div class="contenido_opinion">
+                    <p class="deporteOpinion">NATACIÓN</p>
+                    <p>La piscina es muy buena, puedes entrenar tranquilamente y el profesor te orienta y enseña si no sabes hacer cualquier cosa. ¡Está muy pendiente!</p>
+                    <p class="idiomaOpinion" lang="es">Español-ESP</p>
+                </div>
+            </div>
+            
+            <!-- Opinión 4 -->
+            <div class="opinion4">
+                <div class="contenido_perfil">
+                    <img src="Imagenes/perfil4.png" alt="Imagen de perfil del usuario" class="imagen_perfil">
+                    <p class="nombreOpinion">Julia Brown</p>
+                    <p class="fechaOpinion">12/01/2025 - 14:34</p>
+                </div>
+                <div class="contenido_opinion">
+                    <p class="deporteOpinion">NATACIÓN</p>
+                    <p>Despite the language barrier, the classes have been very enriching, and I’ve been able to adapt perfectly. An incredible swimming class. I ended up tired but very eager to continue.</p>
+                    <p class="idiomaOpinion" lang="en"> English-USA</p>
+                </div>
+            </div>
+        </section>
+        <!--FORMULARIO-->
+        <section id="formulario" class="zonaContenido" tabindex="0">
+            <h3 class="tituloSecciones">FORMULARIO DE OPINIONES</h3>
+            <!--utilizo autocompletado para que ayude a autocompletar los campos-->
+            <form action="" autocomplete="on" validate>
+                <fieldset>
+                    <legend class="leyendaFormulario">Formulario de Opinión</legend>
+                    <p class="datosFormulario">DATOS PERSONALES OBLIGATORIOS</p><br>
+                    
+                    <!-- Campo Nombre, le he asignado una tecla rápida -->
+                    <label for="nombreFormulario" accesskey="a">Nombre: (Obligatorio)</label>
+                    <!--Establezco un máximo de 20 caracteres con maxlength, con title indicamos lo que queremos en cada campo, required
+                    para indicar que es obligatorio, tabindex voy aumentando el número según las secciones para que vayan de forma ordenada.
+                    Luego establecemos el placeholder y el title para indicar los requerimientos-->
+                    <input id="nombreFormulario" class="obligatorio" name="nombre" maxlength="20" 
+                           placeholder="Nombre" title="Introduzca su nombre máximo 20 caracteres" tabindex="1" required>
+                    <!--Para poner los mensajes en caso de ser válido o inválido-->
+                    <span class="mensaje"></span>
+                    <br><br>
+        
+                    <!-- Campo Correo -->
+                    <label for="emailFormulario" accesskey="e">Correo Electrónico: (Obligatorio)</label>
+                    <input id="emailFormulario" type="email" class="obligatorio" name="email" 
+                           placeholder="ejemplo@correo.com" title="Introduzca su correo electrónico" tabindex="2" required>
+                    <span class="mensaje"></span>
+                    <br><br>
+        
+                    <!-- Campo Opinión -->
+                    <label for="opinionFormulario" accesskey="o">Opinión: (Obligatorio)</label>
+                    <textarea id="opinionFormulario" class="obligatorio" name="opinion" maxlength="150" 
+                              placeholder="Escribe tu opinión" title="Introduzca la opinión sobre el club deportivo" 
+                              tabindex="3" required rows="5" cols="40"></textarea>
+                    <span class="mensaje"></span>
+                    <br><br>
+        
+                    <!-- Campo Idioma -->
+                    <label for="idiomaFormulario" accesskey="i">Idioma: (Obligatorio)</label>
+                    <select id="idiomaFormulario" class="obligatorio" name="idioma" title="Selecciona un idioma de la lista" tabindex="4" required>
+                        <option value="">Seleccione un idioma</option>
+                        <option value="espanol">Español</option>
+                        <option value="ingles">Inglés</option>
+                        <option value="frances">Francés</option>
+                    </select>
+                    <span class="mensaje"></span>
+                    <br><br>
+        
+                    <!-- Campo Fecha y Hora -->
+                    <label for="fechaFormulario" accesskey="f">Fecha y Hora: (Obligatorio)</label>
+                    <input id="fechaFormulario" type="datetime-local" class="obligatorio" name="fechayHora" 
+                           placeholder="día/mes/año - hora/minutos" title="Introduzca la fecha y hora de entrada de la opinión" 
+                           tabindex="5" required>
+                    <span class="mensaje"></span>
+                    <br><br>
+        
+                    <p class="datosFormulario">DATOS OPCIONALES</p><br>
+        
+                    <!-- Campo Deportes Este campo no es obligatorio por lo tanto no es require -->
+                    <label for="deportesFormulario" accesskey="d">Seleccione el deporte sobre el que da la opinión: (Opcional)</label><br><br>
+                    <div id="deportesFormulario">
+                        <!--Cada checkbox tiene un tabindex superior-->
+                        <input type="checkbox" id="atletismo" name="deportes" value="atletismo" 
+                               title="Seleccionar atletismo como deporte" tabindex="6">
+                        <label for="atletismo">Atletismo</label><br>
+        
+                        <input type="checkbox" id="karate" name="deportes" value="karate" 
+                               title="Seleccionar kárate como deporte" tabindex="7">
+                        <label for="karate">Kárate</label><br>
+        
+                        <input type="checkbox" id="natacion" name="deportes" value="natacion" 
+                               title="Seleccionar natación como deporte" tabindex="8">
+                        <label for="natacion">Natación</label>
+                    </div>
+                    <br>
+        
+                    <!-- Campo Años de Socio -->
+                    <label for="añosSocio" accesskey="q">Número de años de socio en el club (Opcional):</label>
+                    <input type="number" id="añosSocio" name="añosSocio" min="0" max="70" 
+                           placeholder="Ingrese los años de socio" title="Ingrese el número de años entre 0 y 70" tabindex="9">
+                    <span class="mensaje"></span>
+                    <br><br>
+        
+                    <!-- Botones le he asignado una tecla rápida -->
+                    <div class="botones">
+                        <button class="boton enviar" type="submit" accesskey="g">Enviar</button>
+                        <button class="boton cancelar" type="reset" accesskey="r">Cancelar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+        <!--SECCIÓN VENTAS-->
+        <section id="ventas" class="zonaContenido" tabindex="0">
+            <h3 class="tituloSecciones">VENTA DE PRODUCTOS</h3>
+            <!--Creamos una tabla-->
+            <table class="tablaVentas">
+                <caption>Ropa y complementos vendidos del Club</caption>
+                <!-- Agrupamos las columnas para dar estilos -->
+                <colgroup>
+                    <col>
+                    <col span="3" class="hombres">
+                    <col span="3" class="mujeres">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <!--Para que no se muestre el primer cuadro de la tabla-->
+                        <td>&nbsp;</td>
+                        <th id="hombres" scope="colgroup" colspan="3">Hombres</th>
+                        <th id="mujeres" scope="colgroup" colspan="3">Mujeres</th>
+                    </tr>
+                    <tr>
+                        <!--Metí los ids y los headers para solucionar el fallo de examinator, pero no funcionó-->
+                        <th id="ropa" scope="col">Ropa</th>
+                        <th id="atletismo-hombres" scope="col">Atletismo</th>
+                        <th id="karate-hombres" scope="col">Kárate</th>
+                        <th id="natacion-hombres" scope="col">Natación</th>
+                        <th id="atletismo-mujeres" scope="col">Atletismo</th>
+                        <th id="karate-mujeres" scope="col">Kárate</th>
+                        <th id="natacion-mujeres" scope="col">Natación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" id="camiseta-club">Camiseta Club</th>
+                        <td headers="camiseta-club atletismo-hombres">150</td>
+                        <td headers="camiseta-club karate-hombres">180</td>
+                        <td headers="camiseta-club natacion-hombres">100</td>
+                        <td headers="camiseta-club atletismo-mujeres">200</td>
+                        <td headers="camiseta-club karate-mujeres">120</td>
+                        <td headers="camiseta-club natacion-mujeres">170</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="chandal-club">Chándal Club</th>
+                        <td headers="chandal-club atletismo-hombres">300</td>
+                        <td headers="chandal-club karate-hombres">350</td>
+                        <td headers="chandal-club natacion-hombres">400</td>
+                        <td headers="chandal-club atletismo-mujeres">400</td>
+                        <td headers="chandal-club karate-mujeres">250</td>
+                        <td headers="chandal-club natacion-mujeres">300</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="zapatillas">Zapatillas</th>
+                        <td headers="zapatillas atletismo-hombres">450</td>
+                        <td headers="zapatillas karate-hombres">90</td>
+                        <td headers="zapatillas natacion-hombres">70</td>
+                        <td headers="zapatillas atletismo-mujeres">320</td>
+                        <td headers="zapatillas karate-mujeres">78</td>
+                        <td headers="zapatillas natacion-mujeres">90</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="mochila-club">Mochila Club</th>
+                        <td headers="mochila-club atletismo-hombres">325</td>
+                        <td headers="mochila-club karate-hombres">425</td>
+                        <td headers="mochila-club natacion-hombres">400</td>
+                        <td headers="mochila-club atletismo-mujeres">450</td>
+                        <td headers="mochila-club karate-mujeres">375</td>
+                        <td headers="mochila-club natacion-mujeres">325</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" id="pulseras-tela">Pulseras tela Club</th>
+                        <td headers="pulseras-tela atletismo-hombres">500</td>
+                        <td headers="pulseras-tela karate-hombres">1000</td>
+                        <td headers="pulseras-tela natacion-hombres">1500</td>
+                        <td headers="pulseras-tela atletismo-mujeres">1200</td>
+                        <td headers="pulseras-tela karate-mujeres">1400</td>
+                        <td headers="pulseras-tela natacion-mujeres">800</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" id="total">Total</th>
+                        <td headers="total atletismo-hombres">1725</td>
+                        <td headers="total karate-hombres">2045</td>
+                        <td headers="total natacion-hombres">2470</td>
+                        <td headers="total atletismo-mujeres">2570</td>
+                        <td headers="total karate-mujeres">2223</td>
+                        <td headers="total natacion-mujeres">1685</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>        
+    </main>
+    <!--ASIDE-->
+    <aside>
+        <h3 class="tituloAside">ENLACES DE LA PÁGINA</h3>
+        <ul class="listaAside">
+            <!--En cada enlace pongo href y el id de cada sección para que al pulsar el enlace vaya a esa sección. Uso aria-label para decir
+            donde no lleva cada enlace.-->
+            <li><a href="#noticias" aria-label="Enlace que nos lleva a la sección noticias">SECCIÓN DE NOTICIAS</a></li>
+            <li><a href="#secciones" aria-label="Enlace que nos lleva a la sección secciones">SECCIÓN DE DEPORTES</a></li>
+            <li><a href="#opiniones" aria-label="Enlace que nos lleva a la sección opiniones">SECCIÓN DE OPINIONES</a></li>
+            <li><a href="#formulario" aria-label="Enlace que nos lleva a la sección formulario">SECCIÓN FORMULARIO</a></li>
+            <li><a href="#ventas" aria-label="Enlace que nos lleva a la sección ventas">SECCIÓN DE TABLA VENTAS</a></li>
+        </ul>
+        <h3 class="tituloAside">SECCIÓN DE FOTOS DEL CLUB</h3>
+        <!--Cada foto la he metido en un div con la misma class para darle estilo y he añadido alt en todas las imágenes para describirlas.-->
+        <div class="fotos">
+            <h3>Natación</h3>
+            <img src="Imagenes/natacion1.jpg" alt="Imagen de un nadador perteneciente a nuestro club tirándose a la piscina descubierta">
+            <p>Nuestros nadadores preparados en una competición de piscina descubierta.</p>
+        </div>
+        <div class="fotos">
+            <h3>Atletismo</h3>
+            <img src="Imagenes/atletismo1.png" alt="Imagen de nuestros corredores practicando en las pistas">
+            <p>Nuestros atletas preparándose para comenzar uno de los entrenamientos de la semana.</p>
+        </div>
+        <div class="fotos">
+            <h3>Kárate</h3>
+            <img src="Imagenes/karate1.png" alt="Imagen de dos de nuestras karatecas en una competición de defensa personal">
+            <p>Nuestras karatecas en una de las competiciones de defensa personal realizadas este año.</p>
+        </div>
+        <div class="fotos">
+            <h3>Natación</h3>
+            <img src="Imagenes/natacion2.png" alt="Imagen de dos de nuestras nadadoras lanzándose a la piscina descubierta">
+            <p>Dos de nuestras nadadoras lanzandose de cabeza a la piscina descubierta para el entrenamiento del día.</p>
+        </div>
+        <div class="fotos">
+            <h3>Kárate</h3>
+            <img src="Imagenes/karate2.jpg" alt="Imagen de uno de los grupos de kárate del club">
+            <p>Nuestro grupo de las tardes de karatecas después del entrenamiento del día.</p>
+        </div>
+    </aside>
+    <!--FOOTER-->
+    <footer>
+        <!--He utilizado el de la página anterior, añadiendo la accesibilidad-->
+        <section id="redesSociales">
+                <h2>Redes Sociales</h2>
+                <div class="contenedorRedes">
+                    <a href="https://www.facebook.com" target="_blank" class="iconoClase" aria-label="Enlace que nos lleva al facebook del club" >
+                        <img src="Imagenes/facebook.png" alt="Icono de la aplicación de Facbook" class="icono">
+                        Facebook
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="iconoClase" aria-label="Enlace que nos lleva al twitter del club" >
+                        <img src="Imagenes/twitter.png" alt="Icono de la aplicación de twitter" class="icono">
+                        Twitter
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="iconoClase" aria-label="Enlace que nos lleva al instagram del club">
+                        <img src="Imagenes/instagram.png" alt="Icono de la aplicación de instagram" class="icono">
+                        Instagram
+                    </a>
+                </div>
+            </section>
+        
+            <form id="contenedorNewsletter">
+                <label for="correoElectronico">Únete a nuestra newsletter</label>
+                <!--Para usar el poner en el recuadro correo electrónico se usa placeholder-->
+                <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
+                <input type="submit" class="boton" value="Únete">
+            </form>
+    </footer>
+</body>
+</html>

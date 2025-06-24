@@ -1,0 +1,986 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+BODY
+Primero adaptamos el body y dividimos la página con grid y le damos a las filas el ancho automático y a las columnas, le decimos que 
+ocupen encabezado la linea entera, la navegación también y el main va a ocupar 3 partes y el aside una dentro de la misma fila, por último el
+pie de página ocupa toda la fila. He puesto que la altura de la página se vaya adaptando con height.
+*/
+body {
+    display: grid;
+    grid-template-areas: 
+        "encabezado encabezado"
+        "navegacion navegacion"
+        "main aside"
+        "pie pie";
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 3fr 1fr;
+    height: 100vh;
+}
+
+/* Añado una fuente personalizada.*/
+@font-face {
+    font-family: 'fuenteLocal';
+    src: url('../Fuentes/University.otf') format('opentype');
+}
+/*He creado variables con los colores que voy a ir usando*/
+:root{
+    --azul_claro: #4B8CA6;
+    --azul_oscuro: #143959;
+    --amarillo_titulos: #F2E527;
+    --fondo_navegación:#E0E0E0;
+    --amarillo_verdoso: #BABF15;
+    --fondo_main:#d3dbe1;
+
+}
+/* ---------------------------------------------------ENCABEZADO--------------------------------------------------------- */
+/*Añadimos la zona del grid a la que corresponde, centramos los items y les damos el espacio entre ellos y estos a su vez los orgamizamos con
+flex.*/
+#cabecera {
+    grid-area: encabezado;
+    background-color: var(--azul_claro);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 20px;
+}
+
+/* Contenedor del logo */
+.logo {
+    align-items: center;
+    display: flex;
+    gap: 20px; /* Da el espacio entre el logo y el título.*/
+    justify-content: center;/
+}
+
+/* Imagen del logo*/
+.logo img {
+    cursor: pointer; /*Cuando pasa el ratón por encima cambia el cursor.*/
+    height: 80px;
+    width: 80px;
+}
+
+/* Título */
+.logo h1 {
+    color: var(--amarillo_titulos);
+    font-family: 'fuenteLocal'; /*Añado la fuente local que he integrado anteriormente para el titulo de la página*/
+    font-size: 40px;
+}
+
+/*Contenedor de los datos para iniciar sesión, contacto y soporte */
+.datosCabecera {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Para ajustar y dar forma a los datos de iniciar sesión, contacto y soporte.*/
+.datosCabecera a {
+    color: var(--amarillo_titulos);
+    font-size: 15px;
+    padding-left: 50px;
+    margin-right: 30px;
+    text-decoration: none;
+}
+
+/* Ajustar las imagenes para cuando las pantallas sean de menos de 620px, le damos a display none para que no aparezcan.*/
+.datosCabecera img {
+    display: none;
+    height: 20px;
+    width: 20px;
+}
+
+/*-------------------------------------------------------NAVEGACIÓN-------------------------------------------------------*/
+/*En navegación primero asignamos el área de navegación que ocupa en el grid, luego aplicamos flex, porque vamos a trabajar con elementos
+de forma horizontal.*/
+nav {
+    grid-area: navegacion;
+    display: flex;
+    margin: 0;
+}
+
+/*Ahora trabajamos con el ul, es decir, con las listas, las alinemamos en el centro, le quitamos el estilo de la lista, le decimos qye
+ocupe todo el ancho.*/
+ul {
+    align-items: center;
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a lo largo del ancho */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Menú principal: Esta va a ser la primera lista que contenga las sublistas. Lo organizamos con display flex para trabajar en horizontal*/
+.menu_principal {
+    display: flex;
+    width: 100%;
+}
+/*Primero trabajamos con los li, es decir con cada una de las partes de la lista que contiene menú principal, que corresponde a Club, noticias
+y secciones. Aquí trabajamos con el contenedor*/
+.menu_principal li {
+    background-color:var(--fondo_navegación) ;
+    flex: 1; /* Hace que cada 'li' ocupe el mismo espacio */
+    padding: 10px;
+    position: relative; /* Necesario para posicionar el submenú */
+    text-align: center;
+}
+/*Luego ajustamos el enlace, le damos color a la letra, le quitamos la decoración de enlace, las disponemos en bloque y le damos relleno*/
+.menu_principal li a {
+    color: black;
+    display: block;
+    font-size: 20px;
+    padding: 15px;
+    text-decoration: none;
+}
+/*Ajustamos el hover para cuando pasamos el ratón por encima de estos enlaces, aqui solo he cambiado el color de la letra*/
+.menu_principal li a:hover {
+    color: var(--amarillo_verdoso);
+}
+
+/*Para trabajar con el submenú y no hacer tantas clases, lo que he hecho es señalar la li y el ul que sale de esta, he usado top para
+que cada sublista se coloque justo debajo de su padre correspondiente y no un poco por encima, he usado display none para que se oculte
+ y solo apareza cuando se pasa el ratón por encima y la posición absolute para que se coloque debajo, sino se descoloca toda la fila. */
+.menu_principal li ul {
+    display: none;
+    flex-direction: column;
+    left: 0;
+    position: absolute; /* Posiciona el submenú */
+    top: 100%; /* Coloca el submenú justo debajo del li */
+    width: 100%; 
+}
+
+/*PARA QUE APAREZACA EL SUBMENÚ AL PASAR EL RATÓN, IMPORTANTE*/
+.menu_principal li:hover > ul {
+    display: flex; /* Muestra el submenú cuando se pasa el ratón */
+}
+
+/* Cambiamos el estilo del submenú el contenedor. Utilizamos block para que cada uno ocupe una fila. */
+.menu_principal li ul li {
+    background-color: var(--azul_oscuro); 
+    display: block;
+    text-align: center; 
+    width: 100%;
+}
+
+/* Aquí cambiamos el color de los enlaces y le quitamos el subrayado de los enlaces.*/
+.menu_principal li ul li a {
+    color: var(--fondo_navegación); 
+    text-decoration: none; 
+}
+
+/* Cambiar color de submenú cuando se pasa por encima */
+.menu_principal li ul li:hover {
+    background-color: var(--amarillo_verdoso); 
+}
+
+.menu_principal li ul li a:hover {
+    color: var(--azul_oscuro);
+}
+
+/* Menú hamburguesa */
+.icono_hamburguesa {
+    display: none; /* Oculta el menú hamburguesa por defecto */
+}
+/*Aquí nos aseguramos que el menú hamburguesa no se despliegue si no lo pulsamos.*/
+.menu_hamburguesa {
+    display: none;
+}
+
+.imagenHamburguesa{
+    height: 30px;
+    width: 35px;
+}
+
+.ocultar {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.ocultar:focus {
+    top: 0;
+}
+
+/*--------------------------------------------------------MAIN-----------------------------------------------------------------*/
+/*En main disponemos el espacio que ocupa en el grid del body y he organizado esta sección con grid, se podría también con flex-column,
+pero se me hacía más seguro ponerlo con grid*/
+main{
+    grid-area: main;
+    display: grid;
+    grid-template-areas: 
+    "noticias"
+    "secciones"
+    "opiniones"
+    "formulario"
+    "ventas";
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto auto auto auto auto; 
+}
+
+/*Aquí he puesto estilos comunes para algunos de los textos de cada sección, menos el de sección de opiniones que se me descuadraba la página
+y no entendía porqué */
+.tituloSecciones{
+    background-color: var(--azul_oscuro);
+    color:var(--amarillo_titulos); /* Color blanco para un buen contraste */
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+/*##############SECCIÓN DE NOTICIAS#############*/
+/*En primer lugar, lo hice con clases, pero cuando vi la parte del aside, decidí que era mejor hacer las secciones con id y la clase
+reservarla para el focus, para no hacer muchas clases y que tenga un poco de orden. Las noticias las he organizado con grid también.*/
+#noticias {
+    grid-area: noticias;
+    background-color: var(--fondo_main);
+    display: grid;
+    grid-template-areas: 
+    "titulo titulo" 
+    "noticia1 noticia2";
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding-bottom: 30px;
+}
+
+/*Los parrafos de las noticias le he dado un tamaño y los he puesto justidicadas.*/
+#noticias p{
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: justify;
+}
+/*Para darle estilo a las imágenes de esta sección.*/
+#noticias img{
+    height: 200px;
+    margin-top: 10px;
+    margin-left: 45px;
+    width: 200px;
+}
+/*Definir el area del grid del título*/
+.tituloSecciones{
+    grid-area: titulo;
+}
+/*Noticia 1, he indicado donde se encontraría y a su vez, he hecho otro grid para establecer la estructura de esta noticia, donde el parrafo 3
+irá arriba y luego los parrafos 1 y 2 se mantendrán a la izquierda y las imágenes a la derecha.*/
+
+.noticia1{
+    grid-area: noticia1;
+    border-right: 2px solid var(--azul_oscuro); /*Le he dejado un borde para separar ambas noticias*/
+    display: grid;
+    grid-template-areas: 
+    "tituloNoticia tituloNoticia"
+    "parrafo3 parrafo3"
+    "parrafo1 imagen1"
+    "parrafo2 imagen2";
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr; 
+    margin-left: 30px;
+    margin-right: 15px;
+    padding-right: 35px;
+}
+/*En la noticia 2 he seguido los mismos pasos que en la 1, he decidido hacerlo por pasos para que no se me descuadrara todo.*/
+.noticia2{
+    grid-area: noticia2;
+    display: grid;
+    grid-template-areas: 
+    "tituloNoticia tituloNoticia"
+    "parrafo3 parrafo3"
+    "parrafo1 imagen1"
+    "parrafo2 imagen2";
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    margin-right: 30px;
+    margin-left: 15px;
+}
+
+/*Colocamos el titulo de la noticia en el grid, dentro de ambas y le damos estilo*/
+.tituloNoticia{
+    grid-area: tituloNoticia;
+    color: var(--azul_oscuro);
+    font-size: 20px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/*Ajustamos las imagenes al grid al igual que los parrafos, dándole estilo si lo necesitaran*/
+.imagenNoticia1{
+    grid-area: imagen1;
+}
+
+.imagenNoticia2{
+    grid-area: imagen2;
+    margin-bottom: 20px;
+}
+
+.parrafo1{
+    grid-area: parrafo1;
+    color: var(--azul_oscuro);
+    margin-top: 30px;
+}
+
+.parrafo2{
+    grid-area: parrafo2;
+    color: var(--azul_oscuro);
+    padding-bottom: 15px;
+}
+
+.parrafo3{
+    grid-area: parrafo3;
+    color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    font-style: italic;
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+/*###############SECCIÓN SECCIONES##################*/
+/*Nueva sección llamada secciones, lo primero que hacemos es decir donde va dentro del grid del main, le damos fondo y aquí en primer lugar 
+trabajaremos con flex en horizontal para el título y el cuerpo de esta sección. */
+#secciones {
+    grid-area: secciones;
+    background-color: var(--fondo_main);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+}
+/*Primero le damos estilo al texto que aparece debajo de las fotos y lo centramos debajo de la imágen.*/
+#secciones h4 {
+    color: var(--fondo_main);
+    font-size: 20px;
+    margin-top: 10px; 
+    text-align: center; 
+}
+
+/*A continuación, pasamos a organizar el div de las imágenes de los deportes, que tendrán enlaces. Primero, organizamos los div que tenemos
+en ellas, con flex, para que estén horizontales y utilizamos space-between para asegurarnos que el espacio es igual entre contenedores. */
+.imagenesDeportes {
+    display: flex; 
+    gap: 1px;
+    justify-content: space-between; 
+    width: 100%; 
+}
+
+/*Seguimos, dándole estilo a los diferentes div que contiene este anterior div, aquí he usado flex 1 para que cada contenedor de la imágen
+ocupe el mismo espacio, he usado flex column para estructurar la imágen y el titulo de debajo.*/
+.imagenesDeportes div {
+    align-items: center;
+    background-color: var(--azul_oscuro);
+    border-radius: 10px;
+    box-sizing: border-box; 
+    display: flex;
+    flex: 1;
+    flex-direction: column; 
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 20px;
+    width: 100%;
+}
+/*Damos estilo a las imágenes dentro del div principal, he usado display block para que ocupe toda la fila.*/
+.imagenesDeportes img {
+    border-radius: 20px;
+    display: block;
+    height: 200px; 
+    width: 300px;
+}
+
+/*#######################SECCIÓN OPINIONES###################################*/
+/*Nueva sección de opiniones, la definimos dentro del grid del main y a continuación hacemos otro grid para estructurar las opiniones
+que queremos poner en nuestra página.*/
+#opiniones {
+    grid-area: opiniones;
+    background-color: var(--fondo_navegación);
+    display: grid;
+    grid-template-areas: 
+        "tituloOpiniones tituloOpiniones"
+        "opinion1 opinion3"
+        "opinion2 opinion4";
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+/*Este titulo no pude meterlo con la class porque se me descuadraba todo y la solución fue ponerlo aquí.*/
+.tituloOpiniones{
+    grid-area: tituloOpiniones;
+    background-color: var(--azul_oscuro);
+    color:var(--amarillo_titulos); /* Color blanco para un buen contraste */
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding: 15px;
+    text-align: center;
+}
+/*
+Aquí le he dado estilo al contenedor de las opiniones y más abajo he ido relacionando cada class con el grid que he hecho en opiniones.
+*/
+
+#opiniones div{
+    background-color: var(--azul_oscuro);
+    border-radius: 10px;
+    color: var(--fondo_main);
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 6px;
+    text-align: justify;
+}
+.opinion1{
+    grid-area: opinion1;
+}
+
+.opinion2{
+    grid-area: opinion2;
+}
+
+.opinion3{
+    grid-area: opinion3;
+}
+
+.opinion4{
+    grid-area: opinion4;
+}
+
+/*Luego le he dado estructura al contenido del perfil, usando de nuevo grid y poniendo la foto y el nombre en la primera fila y la fecha abajo*/
+.contenido_perfil{
+    display: grid;
+    grid-template-areas: 
+    "fotoPerfil nombre"
+    "fotoPerfil fecha";
+    grid-template-rows: auto auto;
+    grid-template-columns: 60px 1fr;
+}
+
+.imagen_perfil{
+    grid-area: fotoPerfil;
+}
+.nombreOpinion{
+    grid-area: nombre;
+}
+
+.fechaOpinion{
+    grid-area: fecha;
+}
+/*He hecho las imágenes redondas y ajustadas a los contenedores.*/
+.imagen_perfil{
+    border-radius: 50%;
+    height: 50px;
+    object-fit: cover; 
+    width: 50px;
+}
+
+.nombreOpinion{
+    font-weight: bold;
+}
+
+.deporteOpinion{
+    color: var(--amarillo_titulos);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.idiomaOpinion{
+    font-style: italic;
+    margin-top: 5px;
+    text-align: end;
+}
+
+
+/*######################SECCIÓN FORMULARIO#######################*/
+/*Nueva sección, la situamos en el grid que hemos hecho en el main, en formulario y le damos el color de fondo y un poco de padding al final*/
+#formulario {
+    grid-area: formulario;
+    background-color: var(--fondo_main);
+    padding-bottom: 20px;
+    width: 100%;
+}
+/*Le damos estilo al formulario*/
+fieldset{
+    background-color: var(--azul_oscuro);
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.leyendaFormulario{
+    color: var(--amarillo_titulos);
+    font-size: 26px;
+    font-weight: bold;
+}
+/*Damos estilo a los titulos que he metido dentro del formulario, le he dado tamaño y la he puesto en negrita para que resalte más*/
+.datosFormulario{
+    color:var(--amarillo_titulos); 
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+/*Aquí le damos estilo a las etiquetas*/
+label{
+    color:var(--fondo_navegación);
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+/*Para ahorrar código he establecido estilos de todos los input que he utilizado aquí.*/
+input, textarea, select{
+    margin-left: 10px;
+    padding: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+}
+/*He aumentado el checkbox y como se me descolocó al aumentarlo he utilizado vertical align middle para que se alinee con el texto*/
+input[type="checkbox"] {
+    height: 20px; 
+    width: 20px;  
+    vertical-align: middle; 
+}
+
+#deportesFormulario{
+    padding-left: 45px;
+}
+/*He señalado que cuando el formulario sea invalido se coloque de color rojo como le he quitado el borde, le he dado el rojo con la sombra
+para que quede más estético.*/
+.obligatorio:invalid{
+    box-shadow: 0 0 8px #FF3B3B;
+    outline: none; 
+}
+/*Y que aparezca un mensaje con el color rojo*/
+.obligatorio:invalid+.mensaje{
+    color:red;
+}
+/*Luego se define el mensaje, el color, el contenido, he puesto una cruz para que quedara más estético que con un mensaje, posición absolute 
+para que no se descuadre.*/
+.obligatorio:invalid+.mensaje::after{
+    color: red;
+    content: "❌";
+    padding: 0px 10px;
+    position: absolute;
+}
+/*Con la parte del válido he seguido los mismos pasos, pero cambiando a verde.*/
+.obligatorio:valid{
+    box-shadow: 0 0 8px rgb(97, 237, 97);
+    outline: none;
+}
+.obligatorio:valid+.mensaje{
+    color: rgb(97, 237, 97);
+}
+.obligatorio:valid+.mensaje::after{
+    color: rgb(97, 237, 97);
+    content: "✔";
+    padding: 0px 10px;
+    position: absolute;
+}
+/*Para que cuando le de a la etiqueta haga focus, y se ponga de color verde, he hecho todos los input que he utilizado y son 
+obligatorios desde aquí y lo he puesto de color azul, de nuevo he quitado el borde y lo he puesto azul con la sombra.*/
+.obligatorio:focus, input:focus, select:focus, option:focus{
+    background-color: #fff; 
+    border-color: blue;
+    box-shadow: 0 0 8px blue;
+    outline: none; 
+    
+}
+/*Le damos estilo al contendor de los botones poniendolos en el centro y a cada botón independiente.*/
+.botones{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+.boton{
+    color: black;
+    font-weight: 600;
+    margin:10px;
+    padding: 10px;
+    text-align: center;
+}
+/*En los apuntes vi que se podía hacer así si ponías las dos palabras separadas y lo utilicé aquí*/
+.enviar{
+    background-color:var(--amarillo_titulos);
+}
+.cancelar{
+    background-color:var(--amarillo_titulos);
+}
+.boton:focus,.boton:hover{
+    color:var(--azul_claro);
+    outline:solid 2px blue;
+}
+
+/*#################################TABLA DE VENTAS###################################################*/
+/*Nueva sección que establecemos el en el grid del main como ventas y le establecemos los estilos correspondientes.*/
+#ventas {
+    grid-area: ventas;
+    background-color: var(--fondo_main);
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#ventas caption{
+    font-style: italic;
+}
+/*He ajustado el ancho de la tabla a un 80% y la he centrado horizontalmente.*/
+.tablaVentas{
+    width: 80%; 
+    margin: 0 auto; 
+}
+/*Le he dado estilo a las columnas que no tenían ninguna clase establecida y le he quitado el borde.*/
+th{
+    background-color: var(--azul_oscuro);
+    color: var(--fondo_main);
+    border:none;
+    width:7rem;
+    padding: 10px;
+}
+/*Le he dado padding a las filas*/
+td{
+    text-align: center;
+    padding: 10px;
+}
+/*Le he dado estilo a las clases hombres y mujeres por filas.*/
+.hombres{
+    background-color:var(--amarillo_verdoso);
+}
+.mujeres{
+    background-color:var(--azul_claro);
+}
+
+/*-----------------------------------------------ASIDE-----------------------------------------------------------------------------*/
+/*Hemos terminado el main y establecemos el aside dentro del grid del body y añadimos que dispondremos este con flex en columnas.*/
+aside {
+    grid-area: aside;
+    background-color: var(--azul_claro);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+/*Como lo hemos hecho por lista le quitamos la forma de lista, le añadimos flex column.*/
+.listaAside {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    width: 100%;
+}
+
+.listaAside li {
+    display: block;
+    margin-bottom: 30px;
+}
+/*Aqui le damos estilo a los enlaces y le damos forma de botones*/
+.listaAside li a {
+    background-color: var(--azul_oscuro);
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    color: var(--amarillo_titulos);
+    display: block;
+    flex-grow: 1;
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+.listaAside li a:hover {
+    background-color: var(--amarillo_titulos); 
+    color: var(--azul_oscuro);
+}
+
+.tituloAside {
+    color: var(--amarillo_titulos);
+    font-size: 30px;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    width: 100%; 
+}
+/*Aqui establezco el estilo del focus cuando pulse los enlaces, le he puesto un borde azul, márgenes arriba y abajo y opacidad*/
+.zonaContenido:focus {
+    border: 5px solid blue;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/*Finalmente en el aside le he dado estilo a las fotos de esta sección por medio de la clase fotos*/
+.fotos{
+    align-items: center;
+    background-color: var(--azul_oscuro);
+    border-radius: 10px;
+    justify-content: center;
+    margin-bottom: 65px;
+    padding: 10px;
+    text-align: center;
+}
+
+.fotos img{
+    height: 200px;
+    width: 300px;
+}
+
+.fotos h3{
+    color: var(--amarillo_titulos);
+    font-size: 25px;
+    margin-bottom: 10px;
+    
+}
+
+.fotos p{
+    margin-top: 10px;
+    color:var(--fondo_main);
+    font-size: 17px;
+}
+/*PIE DE PÁGINA: La última sección es el pie de página, aquí usamos flex para ordenar en fila los tres elementos que contiene.*/
+footer {
+    grid-area: pie;
+    align-items: center; /*Centra verticalmente los elementos dentro del footer*/
+    background-color:#143959;
+    color:#BABF15;
+    display: flex;
+    justify-content: space-between; /*Se asegura de que haya espacio entre las secciones*/
+    padding: 10px; /* Añadir algo de padding para no pegar los elementos al borde*/
+}
+
+/*Aquí he nombrado los tres títulos y he usado flex 1, que es para que todos los elementos ocupen la misma línea.*/
+#redesSociales h2, #contacto h2, #contenedorNewsletter label {
+    flex: 1;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#contacto {
+    margin-left: 10px;
+}
+/*Para quitar las viñetas a la lista*/
+#contacto ul{
+    list-style-type: none;
+}
+/*Creamos un flex para ordenar los elementos de las redes sociales en vertical y de manera centrada.*/
+#redesSociales {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.iconoClase {
+    align-items: center;
+    color: var(--amarillo_titulos); 
+    display: flex;
+    justify-content: flex-start; /*Alinea el texto y la imagen al principio.*/
+    text-decoration: none; /*Elimina el subrayado de los enlaces*/
+}
+
+.iconoClase img {
+    margin-right: 10px;
+    height: 25px; 
+    width: 25px;
+}
+/*Aplicamos un flex para alinear en vertical los elementos de newsletter.*/
+#contenedorNewsletter {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+    width: 300px;
+}
+
+
+
+/* Media query para pantallas más pequeñas */
+@media screen and (max-width: 620px) {
+    /*------------------------CABECERA--------------------------------------------*/
+    .logo h1 {
+        display: none; /* Oculta el título en pantallas pequeñas */
+    }
+
+    .datosCabecera {
+        align-items: center;
+        display: flex;
+        gap: 25px;
+        justify-content: flex-end;
+    }
+
+    .datosCabecera a {
+        display: none; /* Oculta los enlaces en pantallas pequeñas */
+    }
+
+    .datosCabecera img {
+        cursor: pointer;
+        display: block; /* Cambiar a block para que se comporten correctamente dentro del contenedor flex */
+        height: 20px;
+        width: 20px;
+    }
+
+    /*--------------------------------------NAVEGACIÓN---------------------------------*/
+    /* Cambiar la dirección de los elementos a columna en pantallas pequeñas */
+    nav {
+        align-items: center;
+        background-color: var(--fondo_navegación);
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Ocultar el menú principal por defecto */
+    .menu_principal {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Mostrar el icono de hamburguesa cuando el tamaño de pantalla es menor a 620px */
+    .icono_hamburguesa {
+        display: block;
+        cursor: pointer;
+        padding: 20px;
+    }
+
+    /* Establecer el estilo para cuando el checkbox está marcado (menú desplegado) */
+    .menu_hamburguesa:checked + .icono_hamburguesa + .menu_principal {
+        display: flex; 
+    }
+
+    /* Hacer que los elementos del menú se apilen verticalmente */
+    .menu_principal li {
+        padding: 10px 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Cambiar el estilo del submenú para que se vea bien en pantallas pequeñas */
+    .menu_principal li ul {
+        flex-direction: column;
+        position: static; 
+        width: 100%;
+    }
+
+    /* Estilo para los elementos del submenú */
+    .menu_principal li ul li {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Estilo para el submenú cuando el ratón pasa por encima de un 'li' */
+    .menu_principal li:hover > ul {
+        display: block; 
+    }
+
+    /*-----------------------------------MAIN-----------------------------------*/
+    /*Establecemos display flex column, porque antes teniamos un grid*/
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+    /*##################NOTICIAS#############################
+    Noticias lo cambiamos a flex column para que se dispongan en una sola columna,*/
+    #noticias {
+        display: flex; 
+        flex-direction: column; 
+        gap: 20px; 
+        width: 100%; 
+    }
+    /*Hacemos que noticia 1 y 2 también se pongan en una sola columna al igual que las imágenes*/
+    .noticia1, .noticia2 {
+        display: flex;
+        flex-direction: column; /* Asegura que los elementos se organicen verticalmente */
+        border: none;
+    }
+
+    #noticias img {
+        align-self: center;
+    }
+    /*#############SECCIONES#######################
+    Hacemos lo mismo, las disponemos en flex column*/
+
+    #secciones{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+    /*hacemos lo mismo con las imagenes y con el div completo, tenemos que poner margin 0 porque sino se desborda el div*/
+    .imagenesDeportes {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    .imagenesDeportes div {
+        width: 100%; 
+        margin: 0; /* Elimina márgenes extra que podrían causar desbordamiento */
+    }
+
+    .imagenesDeportes img {
+        width: 100%;
+        height: auto;  /*Las imágenes ocupan todo el ancho del dic*/
+    }
+    /*###################SECCIÓN OPINIONES###########################
+    Hacemos lo mismo los disponemos en flex column*/
+    #opiniones{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    /*##############################FORMULARIO########################3
+    Reducimos el padding para adaptarlo*/
+    #formulario {
+        padding: 10px;
+    }
+
+    /*Adaptamos el formulario a pantallas pequeñas regulando los padding y los márgenes y poniendo los input y las letras más pequeñas*/
+    fieldset {
+        margin: 0 10px; 
+        padding: 10px 15px; 
+    }
+    .datosFormulario {
+        font-size: 14px; 
+    }
+    label {
+        font-size: 14px;
+    }
+
+    input, textarea, select {
+        font-size: 14px; 
+        padding: 8px; 
+    }
+
+    /* Hacer que los botones ocupen todo el ancho disponible para que quede más estético. */
+    .botones {
+        flex-direction: column;
+        align-items: center; 
+    }
+    .boton {
+        width: 100%; 
+        margin: 5px 0; 
+        font-size: 16px; 
+    }
+    /*En la sección ventas solamente reducimos el padding*/
+    #ventas{
+        padding: 10px;
+    }
+    /*Ocultamos el aside con display none*/
+    aside{
+        display: none;
+    }
+}
+
+

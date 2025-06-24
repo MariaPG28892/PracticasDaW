@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción en el festival de cine</title>
+    <script src="inscripcion.js"></script>
+    <style>
+
+        @font-face {
+            font-family: 'MiFuente'; /* El nombre que usaremos para referirnos a la fuente */
+            src: url('Fuentes/Arcane_Nine.otf') format('opentype');
+        }
+
+        h2{
+            font-family: 'Mifuente';
+            color:#f3202e;
+            font-size: 50px;
+        }
+
+        body{
+            display: flex;
+            background-image: url('Imagenes/fondoInscripcion.png');
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+            background-color: #f4f4f4;
+            flex-direction: column; /* Cambiado para apilar elementos */
+        }
+
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        fieldset {
+            background: #6a07f5;
+            width: 350px;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 0 auto; 
+            border: none;
+        }
+
+        label {
+            font-size: 20px;
+            color: #e90df1e8;
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box; 
+        }
+
+        button{
+            background-color: #f3202e;
+            color: white;
+            padding: 8px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .error {
+            border: solid 2px #ff0000;
+            background-color: #ffeeee;
+        }
+
+        .correcto {
+            border: solid 2px #28a745;
+            background-color: #ffeeee;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 10px; 
+            margin-top: 10px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 120px;
+            padding: 8px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            background-color: #f3202e;
+            color: white;
+        }
+
+        input[type="reset"] {
+            background-color: #f3202e;
+            color: white;
+        }
+
+        /* Estilos para la salida */
+        #salida {
+            width: 350px;  /* Misma anchura del formulario */
+            margin-top: 15px;
+            padding: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>INSCRIPCIÓN</h2>
+    <fieldset>
+        <form name="formulario" id="formulario" action="" method="get">
+
+        <label for="nombre">Nombre y Primer Apellido:</label>
+        <input type="text" name="nombre" id="nombre" required/>
+
+        <label for="codigo">Código de Invitación:</label>
+        <input type="text" name="codigo" id="codigo" required>
+
+        <label for="contrasenia">Contraseña:</label>
+        <input type="password" name="contrasenia" id="contrasenia" required>
+
+        <label for="repetirContrasenia">Repetir contraseña:</label>
+        <input type="password" name="repetirContrasenia" id="repetirContrasenia" required>
+        <button type="button" id="mostrarContrasenia">Mostrar</button>
+
+        <label for="genero">Género Favorito:</label>
+        <input list="generos" id="genero" name="genero">
+
+        <datalist id="generos">
+            <option value="Acción">
+            <option value="Thriller">
+            <option value="Comedia">
+            <option value="Catástrofe">
+            <option value="Ciencia Ficción">
+            <option value="Fantasía">
+            <option value="Documentales">
+            <option value="Aventura">
+            <option value="Superhéroes">
+        </datalist>
+
+        <div class="botones">
+            <input type="reset" name="limpiar" id="limpiar" value="Limpiar" />
+            <input type="submit" name="enviar" id="enviar" value="Enviar" />
+        </div>
+    </fieldset>
+
+    <div id="salida"></div>
+    
+</body>
+</html>

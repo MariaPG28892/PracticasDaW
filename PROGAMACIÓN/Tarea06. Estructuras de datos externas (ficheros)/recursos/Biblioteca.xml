@@ -1,0 +1,28 @@
+<ejercicio2.Biblioteca>
+  <libros>
+    <ejercicio2.Libro>
+      <titulo>El enigma de la montaña</titulo>
+      <autor>Carlos Gonzalez</autor>
+      <capitulos>
+        <string>La llamada del destino</string>
+        <string>El ascenso peligroso</string>
+        <string>Enfrentando la tormenta</string>
+        <string>El descubrimiento final</string>
+      </capitulos>
+      <genero>Aventura</genero>
+      <fechaCreacion>2015-07-15</fechaCreacion>
+    </ejercicio2.Libro>
+    <ejercicio2.Libro>
+      <titulo>Caminos de la mente</titulo>
+      <autor>Elena Rodri­guez</autor>
+      <capitulos>
+        <string>El despertar de la consciencia</string>
+        <string>La busqueda del yo</string>
+        <string>Pensamientos y realidades</string>
+        <string>Trascender el ego</string>
+      </capitulos>
+      <genero>Filosofi­a</genero>
+      <fechaCreacion>2019-09-30</fechaCreacion>
+    </ejercicio2.Libro>
+  </libros>
+</ejercicio2.Biblioteca>

@@ -1,0 +1,211 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F8FAE5;
+}
+/*TODO LO RELACIONADO CON EL ENCABEZADO*/
+#encabezado {
+    display: flex;
+    align-items: center;
+    height: 200px;
+    background-color: #FBCB7B;
+    border-radius: 10px;
+}
+
+#banner {
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+#tituloEncabezado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    text-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+}
+
+#nombre, 
+#Apellido {
+    margin: 0;
+    padding: 0 5px;
+    font-size: 60px;
+}
+
+#nombre {
+    color: #752A07;
+}
+
+#Apellido {
+    color: #EB5E30;
+}
+
+/*TODO LO RELACIONADO CON EL PRIMER NAVEGADOR*/
+
+#navegador {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #EB5E30;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#navegador a {
+    background-color: #F8FAE5;
+    border-radius: 10px;
+    padding: 10px 100px;
+    text-decoration: none;
+    color: #752A07;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+}
+
+#navegador a:hover {
+    background-color: #752A07;
+    color: #FBCB7B;
+}
+
+/*TODO LO RELACIONADO CON EL CONTENIDO DE LA PÁGINA*/
+
+#contenido {
+    float: left;
+    width: 74%;
+    background-color: #b9d9c3;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#fotos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#foto1, 
+#foto2 {
+    float: left;
+    height: 200px;
+    width: 300px;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+    margin-top: 0px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+}
+
+#tituloContenido {
+    text-align: center;
+    margin-top: 20px;
+    color: #EB5E30;
+    text-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+}
+
+#subtituloContenido {
+    float: left;
+    margin-left: 500px;
+    margin-right: 30px;
+    margin-top: 20px;
+    color: #752A07;
+    text-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+}
+
+#texto {
+    float: right;
+    margin-left: 460px;
+    color: #752A07;
+    text-align: justify;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-bottom: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+/*TODO LO RELACIONADO CON EL NAVEGADOR DEL LADO DERECHO*/
+
+#enlacesInteres {
+    float: right;
+    width: 24%;
+    background-color: #FBCB7B;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding-bottom: 140px;
+    text-align: left;
+}
+
+#tituloEnlaces {
+    text-align: center;
+    color: #752A07;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+}
+
+#enlacesInteres a {
+    display: inline-block;
+    background-color: #F8FAE5;
+    border-radius: 10px;
+    border: 1px solid #752A07;
+    text-align: center;
+    text-decoration: none;
+    color: #752A07;
+    padding: 10px 50px;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    width: 200px;
+}
+
+#enlacesInteres a:hover {
+    background-color: #752A07;
+    color: #FBCB7B;
+    border: none;
+}
+
+/*TODO LO RELACIONADO CON EL PIE DE PÁGINA*/
+
+#footer {
+    background-color: #EB5E30;
+    border-radius: 10px;
+    text-align: right;
+    padding: 10px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    clear: both;
+}
+
+#pie {
+    color: #FBCB7B;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#enlaceInstituto {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: #752A07;
+    text-decoration: none;
+    border: 1px #752A07 solid;
+    border-radius: 10px;
+    background-color: #F8FAE5;
+    padding-left: 30px;
+    height: 60px;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+}
+
+#fotoInstituto {
+    width: 50px;
+    height: 30px;
+    margin: 5px;
+}
+
+#footer a:hover {
+    background-color: #752A07;
+    color: #FBCB7B;
+    border: none;
+}

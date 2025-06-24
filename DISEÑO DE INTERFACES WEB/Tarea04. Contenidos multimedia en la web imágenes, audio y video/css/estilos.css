@@ -1,0 +1,290 @@
+/* Nos aseguramos de quitar márgenes y que todo se vea bien */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*He organizado el body con flex, ya que todos van a estar en columna, me parecía más cómodo que con grid.*/
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;     
+}
+
+/* Para adaptar la página pensé hacerlo con mediaQuery, pero era innecesario ya que buscando varias soluciones encontre que
+min-widht y max-width hacían lo mismo era más óptimo y mucho más claro. */
+.contenedor {
+    min-width: 620px;
+    max-width: 1024px;
+    margin: 0 auto;           
+}
+
+
+/* HEADER, aquí metí una imágen como se pedia, la adapte al espacio e hice que no se repitiera. */
+header {
+    background-image: url('../Imagenes/banner.jpg');
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* Para el logo quería hacer un contenedor circular porque al ser svg no tenía fondo y no quedaba del todo bien */
+.contenedorLogo {
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    width: 100px;
+}
+
+/* Estilos del logo */
+.logo {
+    height: 100px;
+    object-fit: contain;
+    padding: 5px;
+    width: 100px;   
+}
+
+/*Ocultamos el menú hamburguesa*/
+.menuHamburguesa{
+    display: none;
+}
+
+/* Estilos navegación */
+nav {
+    background-color: black;
+    border: 2px solid greenyellow;
+    box-sizing: border-box;
+    display: flex;
+    padding: 5px;
+    width: 100%;  
+}
+
+nav a {
+    align-items: center;
+    border-radius: 5px;
+    color: greenyellow;
+    display: flex;
+    flex: 1; /* Hace que cada enlace ocupe el mismo espacio */
+    justify-content: center;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;      
+}
+
+nav a:hover {
+    background-color: #f0f0f0;
+    color: black;
+    cursor: pointer;
+}
+
+/*Para el main he puesto de nuevo una imágen de fondo diferente y la he ajustado y centrado y la he adapatado a que vaya adaptandose
+al contenido que vaya insertando*/
+main{
+    background-image: url('../Imagenes/main.jpg');
+    background-size: cover;
+    background-position: center center; 
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+.titulo{
+    background-color: black;
+    border-top: 2px solid greenyellow;
+    color: greenyellow;
+    text-align: center;
+    padding: 5px;
+}
+
+/* Para las imágenes busqué una forma de hacer que todas ocuparan lo mismo con grid, sin necesidad de marcar las áreas y la encontré
+de forma que solamente tenía que tocar las columnas y poner dos del mismo tamaño.*/
+.imagenes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    margin: 20px;
+    padding-bottom: 30px;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+}
+
+img {
+    width: 100%;        
+    height: auto;   
+    object-fit: cover;  /* Esto es para que no se distorsionen */
+}
+
+figcaption {
+    background-color: black;
+    border-radius: 5px;
+    color: greenyellow;
+    font-size: 20px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.imagen1{
+    height: auto;
+    margin-top: 15px;
+    width: 64%; 
+}
+
+.imagen2, .imagen3, .imagen4 {
+    width: 100%; 
+    height: auto;
+}
+
+/*AUDIO*/
+.audio{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding-bottom: 20px ;
+}
+
+/*VIDEO*/
+video {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+}
+
+.botonesVideo{
+    margin-top: 10px;
+    text-align: center;
+}
+.botonesVideo button {
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.video{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+.circulo{
+    background-color: black;
+    border-radius: 50%;
+    color: greenyellow;
+    height: 50px;
+    width: 50px;
+}
+
+.cuadrado{
+    background-color: black;
+    color: greenyellow;
+}
+
+button:hover {
+    background-color: #f0f0f0;  /* Efecto al pasar el ratón */
+    color: black;
+}
+
+/*FOOTER*/
+
+footer{
+    align-items: center;
+    /*Para el fondo lo he hecho con linear-gradiente, que divide el fondo en dos colores diferentes 50/50*/
+    background: linear-gradient(to right, greenyellow 50%, #000308 50%);
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15px;
+}
+
+.videoFooter{
+    color: #f0f0f0;
+    margin-right: 15px;
+}
+
+.audioFooter{
+    color: grey;
+}
+
+.imagenFooter{
+    margin-left: 15px;
+}
+
+.contenedorFooter h3 {
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.contenedorFooter p{
+    margin: 0;
+  font-size: 1em;
+}
+
+/* mediaQuery para adaptar la página a dispositivos pequeños*/
+@media screen and (max-width: 620px) {
+
+    /*En el header hacemos que los dos item queden en línea y ocupen el mismo espacio*/
+    header{
+        align-items: center; 
+        display: flex; 
+        justify-content: space-between; 
+        padding: 10px;
+    }
+
+    /*Ocultamos la navegación*/
+    nav {
+        display: none; 
+    }
+
+    /*Mostramos el icono hamburguesa*/
+    .menuHamburguesa{
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin-right: 50px;
+    }
+
+    .contenedorLogo{
+        margin-left: 50px;
+    }
+
+    .imagenes{
+        grid-template-columns: 1fr;
+    }
+
+    /*Cambiamos la dirección del footer*/
+
+    footer {
+        flex-direction: column;
+    }
+
+    .contenedorFooter{
+        color: #a1bdc5;
+        text-align: center;
+        padding: 20px 0;
+        
+    }
+
+}

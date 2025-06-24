@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de tiempo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="actividad.js"></script>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .titulo{
+            color: coral;
+            color:rgb(80, 130, 255);
+        }
+
+        label{
+            margin-bottom: 14px;
+            font-size: 20px;
+        }
+
+
+        input{
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid coral;
+            border-radius: 10px;
+            padding: 5px;
+
+        }
+
+        .botones button{
+            background-color: coral;
+            color: antiquewhite;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover{
+            color: black;
+            background-color: sandybrown;
+        }
+
+        #resultado {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            box-sizing: border-box;
+            gap: 15px;
+        }
+
+        #mapaTiempo {
+            height: 400px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            border: 2px solid coral;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <h2 class="titulo">PREDICCIÓN DEL TIEMPO</h2>
+    <label>Elige la localidad</label>
+    <input type="text" id="localidad" placeholder="Introduce la ciudad">
+    <div class="botones">
+        <button id="tiempoActual">Tiempo actual</button>
+        <button id="prevision">Previsión para los próximos 3 días</button>
+        <button id="mapa">Mapa</button>
+    </div>
+    <div id="mapaTiempo"></div>
+    <div id="resultado"></div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+.root {
+    -fx-background-color: #3A3A3A;
+    -fx-padding: 10px;
+    -fx-font-family: "Arial";
+    -fx-font-size: 18px;
+    
+}
+
+.text-field {
+    -fx-background-color: #222222; /* Fondo oscuro para la pantalla */
+    -fx-text-fill: white;           /* Texto blanco */
+    -fx-padding: 10px;
+    -fx-font-size: 20px;            /* Aumenta el tamaño de fuente para mayor visibilidad */
+    -fx-border-radius: 10px; 
+    -fx-background-radius: 10px;/* Bordes redondeados */
+    -fx-border-color: #444444;     /* Borde gris oscuro */
+    -fx-border-width: 2px;         /* Grosor del borde */
+    -fx-font-weight: bold;
+    -fx-alignment: center-right; 
+}
+
+.button {
+    -fx-background-color: white;           /* Fondo verde */
+    -fx-text-fill: #2E2E2E;      /* Texto blanco */
+    -fx-font-size: 20px;                      /* Tamaño del texto */
+    -fx-background-radius: 50px;              /* Bordes redondeados */
+    -fx-border-radius: 25px;                               /* Color del borde */
+    -fx-border-width: 2px;                    /* Grosor del borde */
+    -fx-padding: 20px;                        /* Relleno dentro del botón */
+    -fx-min-width: 60px;                      /* Ancho mínimo */
+    -fx-min-height: 60px;                     /* Altura mínima */
+    -fx-alignment: center;   
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 5, 0.5, 2, 2);
+}
+
+.button:hover {
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+   -fx-background-color: #F2D675
+}
+
+.button:pressed {
+     -fx-background-color: #E6B800;
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+/* Estilos específicos para operadores */
+.button.operador {
+    -fx-background-color: #AECBFA; 
+    
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+.button.operador:hover {
+    -fx-background-color: #80C4E0;
+    
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+.button.operador:pressed {
+    -fx-background-color: #4A90E2; 
+    -fx-text-fill: white;
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+/* Estilos específicos para el botón de igual */
+.button.igual {
+    -fx-background-color: #CCF5AC; 
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+.button.igual:hover {
+    -fx-background-color: #81C784;  /* Verde pastel para hover */
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+.button.igual:pressed {
+    -fx-background-color: #4CAF50; 
+    -fx-text-fill: white;/* Verde más intenso para presionar */
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+/* Estilos específicos para el botón de limpiar */
+.button.limpiar {
+     -fx-background-color: #F28B82; 
+     
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+.button.limpiar:hover {
+     -fx-background-color: #E57373;
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}
+
+.button.limpiar:pressed {
+    -fx-background-color: #D32F2F;
+        -fx-text-fill: white;
+    /*Añade las propiedades que consideres necesarias
+     y modifica sus valores para cambiar el aspecto*/
+}

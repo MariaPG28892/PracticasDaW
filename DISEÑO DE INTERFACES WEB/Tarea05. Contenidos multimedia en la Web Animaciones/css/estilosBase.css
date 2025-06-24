@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow: hidden;
+}
+/*Contenedor principal hecho con grid y delimitando el ancho y el alto de la página*/
+.contenedorPrincipal{
+    display: grid;
+    grid-template-areas: 
+    "cabecera    cabecera"
+    "nav         nav"
+    "ejercicio2  ejercicio3"
+    "ejercicio4  ejercicio5"
+    "pie        pie";
+    grid-template-rows: 10% 7% 40% auto 5%;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    max-width: 1240px;
+    height: 100vh;
+}
+
+header{
+    grid-area: cabecera;
+    align-items: center;
+    background-color: yellowgreen;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.fotoPerfil{
+    border-radius: 50%;
+    height: 75px;
+    object-fit: contain;
+    width: 75px;
+}
+
+.nombre{
+    padding-left: 20px;
+}
+
+.cinco{
+    grid-area: ejercicio5;
+}
+
+nav {
+    grid-area: nav;
+    align-items: center;
+    background-color: black;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    justify-self: stretch; /*El menu de navegación se estira hasta ocupar todo el espacio*/
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+nav a {
+    border-radius: 6px;
+    color: greenyellow;
+    flex: 1;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    /*He hecho la transición del menú con el hover y poniéndole 3 segundos para que se aprecie el camboo de color*/
+    transition: background-color 3s ease;    
+}
+
+nav a:hover {
+    background-color: antiquewhite;
+    color: #333;
+}
+
+/*Para saber en que parte del menú has pulsado*/
+.ejercicio {
+    background-color: #828486;
+    border: 1px solid bisque;
+    padding: 10px;
+    overflow: hidden;
+  }
+  
+.ejercicio:target {
+    background-color: rgb(247, 244, 233);
+    border-color: yellowgreen; 
+}
+
+/*Pie de página*/
+footer {
+    grid-area: pie;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+}

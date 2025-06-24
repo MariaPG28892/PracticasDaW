@@ -1,0 +1,119 @@
+
+//Primero defino las variables de los colores de fondo que vamos a utilizar, ya que alguna se repite a esta solo la llamaré fondo.
+$color_fondo_body: #FCFCFC;
+$color_fondo_seccion: #f3f3f3;
+$color_fondo: #280a47;
+
+//El color de las letras, los dos que se usan son el blanco(se repite varias veces) y el negro.
+$color_blanco: #FFFFFF;
+$color_negro: #000000;
+
+//Asigno los tres estilos de letra que se usan, una para los títulos, otra para el cuerpo y una especial para la función.
+$letra_titulos: "Cabin";
+$letra_cuerpo: "Roboto Flex", sans-serif;
+$letra_seccion: "Noto Sans", sans-serif;
+
+/*
+Voy a hacer un mixins para la letra y el color de la letra, ya que se usa en varias ocasiones, se piden juntas, para ellos especifico
+en los parámetros la letra y el color.
+*/
+@mixin letraColor($letra, $color) {
+    font-family: $letra;
+    color: $color;
+}
+//He hecho otro de solo letra para practicar un poco y creo que es muy útil, aunque no sé si correcto.
+@mixin soloLetra($letra){
+    font-family: $letra;
+}
+
+//BODY
+//En el body le asigno el color de fondo y y el color de letra por medio de las variables. 
+body{
+    background-color: $color_fondo_body;
+    color: $color_negro;
+}
+
+//CABECERA
+/*
+En el header, en principio usamos el include para la letra y el color, asignando las variables que deseamos. Y luego, anidamos dentro de 
+este el título y el párrafo.
+*/
+header{
+    display: flex;
+    gap: 80px;
+    justify-content: space-between;
+    background-color: $color_fondo;
+    @include letraColor($letra_cuerpo, $color_blanco);
+
+    h1{
+        @include soloLetra($letra_titulos);
+        font-size: 36px;
+        font-weight: 700;
+        /*
+        Intenté hacerlo así, como se explicaba en clase:
+        font:{
+            size: 36px;
+            weight: 700;
+        }
+        Pero me daba error, no sé si es que solo se puede hacer en casos concretos o es que lo he puesto mal.
+        */
+    }
+
+    p{
+        font-size: 18px;
+    }
+
+}
+
+//CONTENIDO
+/*
+Dentro del main, metemos la sección y dentro de este el título. Dentro de la pseudo-clase he usado una variable de fondo y dentro del 
+titulo he usado el mixins soloLetra, que le aplicaría el estilo de la letra.
+*/
+main{
+    section{
+        @include soloLetra($letra_seccion);
+
+        /*
+        Aquí utilicé section:nth-child(even), pero en el css me aparecía repetida la palabra section y en la tarea solo lo ponía una vez, estuve
+        buscando porque pasaba y la solución que encontré fue poner & para que sea una referencia para contener el contexto del elemento padre.
+        Funcionaría igual, pero para que me saliera igual que en la tarea he puesto &.
+        */
+        &:nth-child(even){
+            background-color: $color_fondo_seccion;
+        }
+
+        h1{
+            @include soloLetra($letra_titulos);
+            font-size:28px;
+        }
+    }
+}
+
+//PIE DE PÁGINA
+/*
+En el pie de página lo que le he asignado es la variable de color_fondo que también la usábamos en la cabecera y el mixins donde se 
+aplica la letra y el color. Dentro del título del footer he metido un mixins de solo letra para establecer la deseada.
+*/
+footer{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: $color_fondo;
+    @include letraColor($letra_cuerpo, $color_blanco);
+
+    h2{
+        @include soloLetra($letra_titulos);
+        font-size: 240px;
+        font-weight: 500;
+    /*
+    Aquí de nuevo intenté usar lo de clase:
+        font:{
+            size: 240px;
+            weight: 500;
+        }
+    Pero de nuevo me daba error.
+    */
+    }
+
+}

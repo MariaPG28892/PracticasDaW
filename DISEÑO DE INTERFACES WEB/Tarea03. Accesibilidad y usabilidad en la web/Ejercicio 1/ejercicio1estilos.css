@@ -1,0 +1,192 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que los paddings y márgenes no afecten el tamaño total */
+}
+
+:root{
+    --azul_claro: #4B8CA6;
+    --azul_oscuro: #143959;
+    --amarillo_titulos: #F2E527;
+    --fondo_navegación:#E0E0E0;
+    --amarillo_verdoso: #BABF15;
+    --fondo_main:#d3dbe1;
+
+}
+
+/*-------------------------------------------------------NAVEGACIÓN-------------------------------------------------------*/
+/*En navegación primero asignamos el área de navegación que ocupa en el grid, luego aplicamos flex, porque vamos a trabajar con elementos
+de forma horizontal.*/
+nav {
+    grid-area: navegacion;
+    display: flex;
+    margin: 0;
+}
+
+/*Ahora trabajamos con el ul, es decir, con las listas, las alinemamos en el centro, le quitamos el estilo de la lista, le decimos qye
+ocupe todo el ancho.*/
+ul {
+    align-items: center;
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a lo largo del ancho */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Menú principal: Esta va a ser la primera lista que contenga las sublistas. Lo organizamos con display flex para trabajar en horizontal*/
+.menu_principal {
+    display: flex;
+    width: 100%;
+}
+/*Primero trabajamos con los li, es decir con cada una de las partes de la lista que contiene menú principal, que corresponde a Club, noticias
+y secciones. Aquí trabajamos con el contenedor*/
+.menu_principal li {
+    background-color:var(--fondo_navegación) ;
+    flex: 1; /* Hace que cada 'li' ocupe el mismo espacio */
+    padding: 10px;
+    position: relative; /* Necesario para posicionar el submenú */
+    text-align: center;
+}
+/*Luego ajustamos el enlace, le damos color a la letra, le quitamos la decoración de enlace, las disponemos en bloque y le damos relleno*/
+.menu_principal li a {
+    color: black;
+    display: block;
+    font-size: 20px;
+    padding: 15px;
+    text-decoration: none;
+}
+/*Ajustamos el hover para cuando pasamos el ratón por encima de estos enlaces, aqui solo he cambiado el color de la letra*/
+.menu_principal li a:hover {
+    color: var(--amarillo_verdoso);
+}
+
+/*Para trabajar con el submenú y no hacer tantas clases, lo que he hecho es señalar la li y el ul que sale de esta, he usado top para
+que cada sublista se coloque justo debajo de su padre correspondiente y no un poco por encima, he usado display none para que se oculte
+ y solo apareza cuando se pasa el ratón por encima y la posición absolute para que se coloque debajo, sino se descoloca toda la fila. */
+.menu_principal li ul {
+    display: none;
+    flex-direction: column;
+    left: 0;
+    position: absolute; /* Posiciona el submenú */
+    top: 100%; /* Coloca el submenú justo debajo del li */
+    width: 100%; 
+}
+
+/*PARA QUE APAREZACA EL SUBMENÚ AL PASAR EL RATÓN, IMPORTANTE*/
+.menu_principal li:hover > ul {
+    display: flex; /* Muestra el submenú cuando se pasa el ratón */
+}
+
+/* Cambiamos el estilo del submenú el contenedor. Utilizamos block para que cada uno ocupe una fila. */
+.menu_principal li ul li {
+    background-color: var(--azul_oscuro); 
+    display: block;
+    text-align: center; 
+    width: 100%;
+}
+
+/* Aquí cambiamos el color de los enlaces y le quitamos el subrayado de los enlaces.*/
+.menu_principal li ul li a {
+    color: var(--fondo_navegación); 
+    text-decoration: none; 
+}
+
+/* Cambiar color de submenú cuando se pasa por encima */
+.menu_principal li ul li:hover {
+    background-color: var(--amarillo_verdoso); 
+}
+
+.menu_principal li ul li a:hover {
+    color: var(--azul_oscuro);
+}
+
+/* Menú hamburguesa */
+.icono_hamburguesa {
+    display: none; /* Oculta el menú hamburguesa por defecto */
+}
+/*Aquí nos aseguramos que el menú hamburguesa no se despliegue si no lo pulsamos.*/
+.menu_hamburguesa {
+    display: none;
+}
+
+.imagenHamburguesa{
+    height: 30px;
+    width: 35px;
+}
+
+.ocultar {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.ocultar:focus {
+    top: 0;
+}
+
+
+@media screen and (max-width: 620px) {
+
+    /*--------------------------------------NAVEGACIÓN---------------------------------*/
+    /* Cambiar la dirección de los elementos a columna en pantallas pequeñas */
+    nav {
+        align-items: center;
+        background-color: var(--fondo_navegación);
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Ocultar el menú principal por defecto */
+    .menu_principal {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Mostrar el icono de hamburguesa cuando el tamaño de pantalla es menor a 620px */
+    .icono_hamburguesa {
+        display: block;
+        cursor: pointer;
+        padding: 20px;
+    }
+
+    /* Establecer el estilo para cuando el checkbox está marcado (menú desplegado) */
+    .menu_hamburguesa:checked + .icono_hamburguesa + .menu_principal {
+        display: flex; 
+    }
+
+    /* Hacer que los elementos del menú se apilen verticalmente */
+    .menu_principal li {
+        padding: 10px 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Cambiar el estilo del submenú para que se vea bien en pantallas pequeñas */
+    .menu_principal li ul {
+        flex-direction: column;
+        position: static; 
+        width: 100%;
+    }
+
+    /* Estilo para los elementos del submenú */
+    .menu_principal li ul li {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Estilo para el submenú cuando el ratón pasa por encima de un 'li' */
+    .menu_principal li:hover > ul {
+        display: block; 
+    }
+
+
+}

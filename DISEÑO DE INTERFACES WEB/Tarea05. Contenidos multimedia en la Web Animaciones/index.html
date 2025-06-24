@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones</title>
+    <link rel="stylesheet" href="css/estilosBase.css">
+    <link rel="stylesheet" href="css/ejercicio_2.css">
+    <link rel="stylesheet" href="css/ejercicio_3.css">
+    <link rel="stylesheet" href="css/ejercicio_4.css">
+</head>
+<body>
+    <div class="contenedorPrincipal">
+        <header>
+            <img src="imagenes/fotoPerfil.jpg" alt="foto de perfil" class="fotoPerfil">
+            <h3 class="nombre">MARÍA PALOMARES GALLO</h3>
+        </header>
+            <nav>
+                <a href="#tf">CSS - TF</a>
+                <a href="#ts">CSS - TS</a>
+                <a href="#css">CSS</a>
+                <a href="#canvas">Canvas</a>
+                <a href="#svg">SVG</a>
+            </nav>
+        <!--Ejercicio 2-->
+        <div class="dos">
+
+            <div id="tf" class="ejercicio transformaciones">
+                <!--botones-->
+                <button class="boton escala">Escalado</button>
+                <button class="boton desplazar">Desplazamiento</button>
+                <button class="boton rotar">Desplazamiento y rotación</button>
+                <!--Bola de billar-->
+                <div class="circuloNegro">
+                  <div class="circuloBlanco">
+                    <p class="numeroBola">7</p>
+                  </div>
+                </div>
+                <!--Mensaje-->
+                <p class="mensaje"></p>
+            </div>              
+            
+            <div id="ts" class="ejercicio transicion">
+                <!--Bola de billar dos-->
+                <div class="bolaMesa">
+                    <div class="circuloBlanco2">
+                      <span class="numero">7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Ejercicio 3-->
+        <div id="css" class="ejercicio tres">
+            <!--Mesa-->
+            <div id="mesa" class="mesa">
+                <!--Taco-->
+                <div id="taco" class="taco">
+                    <div class="mango"></div>
+                    <div class="palo"></div>
+                    <div class="punta"></div>
+                </div>
+                <!--Bolas-->
+                <div class="bola blanca"><span class="numeroBlanca">1</span></div>
+                <div class="bola roja"><span class="numeroRoja">3</span></div>
+                <!--Mensaje-->
+                <div id="mensaje">¡Golpeada!</div>
+            </div>
+            <!--Botones-->
+            <div class="botonesEjercicio2">
+                <button onclick="reanudar()" class="botonEjercicio2">&#9658;</button>
+                <button onclick="parar()" class="botonEjercicio2">&#9208;</button>
+            </div>
+        </div>
+        <!--Ejercicio 4-->
+        <div id="canvas" class="ejercicio cuatro">
+            <canvas id="mesaCanvas" width="800" height="200"></canvas>
+            <button id="iniciarAnimacion" class="botonIniciar">
+                Iniciar Animación
+            </button>
+        </div>
+        <!--Ejercicio 5-->
+        <div id="svg" class="ejercicio cinco">
+            <!--En primer lugar, definimos la etiqueta .svg para hacer la mesa, he usado posicion absolute para poder centrarla-->
+            <svg width="500" height="200" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" 
+            style="background:#006400; border:10px solid #8B4513; border-radius:15px; position: absolute; left: 830px; top: 460px;">
+            
+                <!-- Quería ponerla en el orden del ejercicio, pero si la pongo abajo, la bola queda debajo de la línea y no
+                 se veía tan estético. He intentado hacerlo como en el ejemplo, lo más fiel posible, pero me ha costado mucho-->
+                <path id="trayectoriaAmarilla"
+                        d="M200,100 Q300,50 350,150 L500,150"
+                        stroke="red" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+
+                <!-- Bola amarilla:usamos la etiqueta circle para que sea un círculo hacemos que tenga un radio de 15cm, 
+                la rellenamos de color amarillo y le ponemos un borde negro, dentro de la etiqueta animate, le añadimos
+                la duración, lo que hace después añadimos fill freeze para que no haga nada después de terminar y le añadimos
+                con la etiqueta mpath la ruta que hemos hecho con path. -->
+                <circle r="15" fill="yellow" stroke="black" stroke-width="2">
+                  <animateMotion dur="2s" begin="0s" fill="freeze">
+                    <mpath href="#trayectoriaAmarilla"/>
+                  </animateMotion>
+                </circle>
+            
+                <!-- Aquí definimos la trayectoria de la bola amarilla con path donde vamos a meter nuestras coordenadas.
+                He intentado hacerlo lo más fiel a lo que se muestra en la actividad, pero solo me ha salido esto. -->
+                <path id="trayectoriaAmarilla" d="M200,100 Q300,50 350,150 L500,150" fill="none"/>
+            
+                <!-- Bola roja: con cx y cy la centramos en su sitio y con r le damos el radio, la rellenamos de rojo 
+                 con fill y le ponemos un borde con stroke -->
+                <circle id="bolaRoja" cx="150" cy="100" r="15" fill="red" stroke="black" stroke-width="2">
+                  <!-- Para hacer esta animación usamos transform y translate, ponemos las coordenadas y la duración
+                   luego en begin usamos bolaRoja.click para indicar que se active cuando haces click en ella y 
+                   finalmente usamos freeze para que no haga nada cuando termine. -->
+                  <animateTransform id="animarRoja" attributeName="transform" type="translate"
+                                    from="0 0" to="130 70" dur="1s" begin="bolaRoja.click" fill="freeze"/>
+                </circle>
+            
+                <!-- Bola azul: Hacemos lo mismo, la centramos la formamos y le damos color -->
+                <circle cx="300" cy="150" r="15" fill="blue" stroke="black" stroke-width="2">
+                  <!-- Le asignamos de nuevo transform y translate y le decimos las coordenadas y la duración, aquí
+                   lo interesante es en begin que indica que lo hace cuando la animación de la bola roja termina y que 
+                   al finalizar no haga nada. -->
+                  <animateTransform attributeName="transform" type="translate"
+                                    from="0 0" to="160 -0" dur="1s" begin="animarRoja.end" fill="freeze"/>
+                </circle>
+
+                <!-- Añadimos el texto donde le damos las coordenadas, le he cambiado la fuente y el tamaño -->
+                <text x="390" y="240" fill="white" font-size="27" font-family="Times New Roman">JUGADA 13</text>
+              </svg>
+        </div>
+        <!--Pie de página-->
+        <footer>
+            <p>&copy; 2025 - Realizado por María Palomares Gallo.</p>
+            <p>Tarea 05. Contenidos multimedia en la Web: Animaciones.</p>
+        </footer>
+    </div>
+</body>
+<!--JavaScript para los botones, he tenido que separar las bolas de lo demás porque sino no me funcionaba-->
+<script>
+    const elementos = ['taco', 'mensaje', 'mesa'];
+    const bolas = ['blanca', 'roja', 'numeroBlanca', 'numeroRoja']; 
+
+        function reanudar() {
+        // Reanudar las animaciones para los elementos estáticos (taco, mesa, mensaje, etc.)
+        elementos.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+            el.style.animationPlayState = 'running'; // Reanudar animación
+            if (id === 'mensaje') el.style.display = 'block'; // Asegura que el mensaje sea visible
+            }
+        });
+
+        // Reanudar las animaciones de las bolas
+        bolas.forEach(id => {
+            const el = document.querySelector(`.${id}`);
+            if (el) {
+            el.style.animationPlayState = 'running'; // Reanudar animación de la bola
+            }
+        });
+        }
+
+        function parar() {
+        //Función para parar las animaciones de los elementos estáticos.
+        elementos.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+            el.style.animationPlayState = 'paused'; 
+            }
+        });
+
+        // Pausar las animaciones de las bolas
+        bolas.forEach(id => {
+            const el = document.querySelector(`.${id}`);
+            if (el) {
+            el.style.animationPlayState = 'paused'; 
+            }
+        });
+        }
+</script>
+<script src="/js/ejercicio_4.js"></script>
+</html>

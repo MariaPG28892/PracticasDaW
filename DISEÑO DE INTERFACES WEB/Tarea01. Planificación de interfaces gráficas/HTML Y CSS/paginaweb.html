@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!--Head es para dar nombre a nuestra página, poner meta, enlazarla con el css-->
+<head>
+    <title>Análisis y diseño de una interfaz Web</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="hojaEstilo.css" />
+</head>
+
+<!--El body el la primera capa de todas donde se van a ir superponiendo las otras capas superiores-->
+<body>
+<!--En primer lugar tenemos el encabezado, donde tenemos dos imágenes y un título, a todos le damos un id para después poder trabajar
+con ellos en CSS-->
+    <header id="encabezado">
+        <img src="Foto perfil.png" id="banner" height="200px" width="150px"/>
+        <div id="tituloEncabezado">
+            <h1 id="nombre">MARÍA</h1>
+            <h1 id="Apellido">PALOMARES GALLO</h1>
+        </div>
+    </header>
+    <!--Navegador con los principales enlaces de las páginas que hemos usado-->
+    <nav id="navegador">
+            <a href="https://cnjaen.es/" class="natacionJaen">Club de natación Jaén</a>
+            <a href="https://cdnatacioncordoba.com/" class="natacionCordoba">Club de natación Córdoba</a>
+            <a href="https://www.cnalhambra.es/" class="natacionGranada">Club de natación Granada</a>
+            <a href="https://cnalmeria.com/" class="natacionAlmeria">Club de natación Almería</a>
+    </nav>
+    <!--En main va todo el contenido principal de la página-->
+    <main id="contenido">
+        <h2 id="tituloContenido">LOS BENEFICIOS DE LA NATACIÓN PARA EL CUERPO Y LA MENTE</h2>
+        <h3 id="subtituloContenido">Un deporte completo que beneficia tanto al cuerpo como a la mente</h3>
+        <div id="texto">
+            <p>
+                La natación es uno de los deportes más completos y beneficiosos para la salud, ya que combina el trabajo cardiovascular 
+                con el fortalecimiento muscular de todo el cuerpo. Al ser de bajo impacto, es una actividad apta para personas de todas 
+                las edades y niveles de condición física, incluidas aquellas con problemas articulares, ya que alivia la presión sobre 
+                las articulaciones y reduce significativamente el riesgo de lesiones. Además de mejorar la resistencia física, la natación 
+                tonifica la musculatura y mejora la flexibilidad, lo que la convierte en una opción excelente para mantenerse en forma.
+            </p>
+            <p>
+                No solo ofrece ventajas físicas, sino que también es una práctica muy recomendada para la salud mental. Nadar ayuda a 
+                liberar tensiones acumuladas, reducir el estrés y la ansiedad, y fomentar un estado de relajación. Al moverse en el agua, 
+                el cuerpo genera endorfinas, conocidas como las "hormonas de la felicidad", lo que contribuye a un bienestar emocional 
+                general.
+            </p>
+            <p>
+                En regiones como Andalucía, donde abundan los recursos acuáticos como playas, ríos y piscinas, la natación se ha consolidado 
+                como una parte fundamental del estilo de vida activo de muchas personas. Practicarla regularmente no solo mejora la salud, 
+                sino que también ofrece un medio para disfrutar del entorno natural, integrando deporte, recreación y bienestar.
+            </p>
+        </div>
+        <!-- Los e dividido en div para poder poner una imágen encima de la otra dentro del CSS y que fuera más sencillo-->
+        <div id="fotos">
+        <img src="foto1.jpg" id="foto1"/>
+        <img src="foto2.jpg" id="foto2"/>
+        </div>
+    </main>
+    <!--En los enlaces de la parte derecha he optado por meterlo en otro nav-->
+    <nav id="enlacesInteres">
+        <h3 id="tituloEnlaces">Enlaces de interés</h3>
+        <p><a href="https://www.latevaweb.com/logotipo-y-diseno-web" class="enlace1">Fotos y logos</a></p>
+        <p><a href="https://renerodriguez.eu/diseno-web/como-utilizar-la-tipografia/" class="enlace2">Tipografía</a></p>
+        <p><a href="https://www.latevaweb.com/usodelcoloreneldisenoweb" class="enlace3">Color</a></p>
+        <p><a href="https://wanaleads.com/la-importancia-de-la-iconografia-en-tu-diseno-web/" class="enlace4">Iconografía</a></p>
+        <p><a href="https://www.nordenestudio.es/2019/10/23/estructura-de-una-pagina-web/" class="enlace5">Estructura</a></p>
+    </nav>
+    <!--Cómo no ponía nada en el pie de página y no se quedaba tan estético he metido un texto y un enlace al instituto-->
+    <footer id="footer">
+        <div id="pie">
+            <p>&copy; 2024 Todos los derechos reservados.</p>
+        </div>
+        <a href="https://www.iesaguadulce.es/centro/index.php/" id="enlaceInstituto">IES Aguadulce<img src="iesAguadulce.png" id="fotoInstituto"/></a>
+        
+    </footer>
+
+</body>
+

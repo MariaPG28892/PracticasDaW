@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de inicio</title>
+    <style>
+
+        @font-face {
+            font-family: 'MiFuente'; 
+            src: url('Fuentes/Hello_Sweet_Rain.otf') format('opentype');
+        }
+        body {
+            background-image: url('Imagenes/fondo.png');
+            background-size: cover;  
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            display: flex;
+            justify-content: center;  
+            align-items: center;  
+            height: 100vh;  
+            background-color: black; 
+            flex-direction: column; 
+        }
+
+        a {
+            display: block;
+            color: #00FF00; 
+            text-decoration: none;
+            font-size: 50px;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        a:hover {
+            color: #FF00FF; 
+            cursor: pointer;
+        }
+
+        .enlaces{
+            background-color: #d01f42;
+            border: 5px double rgb(224, 228, 17);
+            text-align: center;
+            font-family: 'MiFuente';
+            padding-bottom: 20px;
+        }
+
+        h2{
+            font-size: 40px;
+            padding: 20px;
+            color: rgb(224, 228, 17);;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="enlaces">
+        <h2>FESTIVAL DE CINE MALO</h2>
+        <a href="inscripcion.html" target="_blank" title="Inscripción en el festival de cine">INSCRIPCIÓN EN EL FESTIVAL DE CINE</a>
+        <a href="votacion.html" target="_blank" title="Votación a la peor película del año">VOTACIÓN DE LA PEOR PELICULA</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+/*Ejercicio 3: Animaciones HTML5 y CSS3 (@keyframe)*/
+/*Primero adaptamos el contendor para que nos salga todo centrado y en su lugar*/
+.tres {
+    grid-area: ejercicio3;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/*A continuación creamos la mesa. Al final le fui añadiendo los elementos de las animaciones que necesitaba
+tanto la animación que va a hacer, los segundos que va a tardar y forward es para que permanezca después de terminar la animación
+y no vuelva a la apariencia princioal*/
+.mesa {
+    background-color: #006400;
+    border: 15px solid #8B4513;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    height: 200px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 500px;
+    /*Animación de cambiar fondo*/
+    animation: cambiarFondo 2s forwards;
+    animation-delay: 1.7s; 
+}
+
+/*CREAR TACO POR PARTES, PRIMERO CONTENEDOR*/
+.taco {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    display: flex;
+    height: 10px;
+    left: 12px;
+    position: absolute;
+    top: 90px;
+    /*He utilizado rotate para que este inclinado*/
+    transform: rotate(-10deg);
+    width: 100px;
+    /*Animación para mover el taco*/
+    animation: moverTaco 1.5s forwards;
+}
+/*DESPUÉS LOS OTROS DIV PARA COMPLETARLO*/
+.mango {
+    width: 40px;
+    background-color: #654321;
+}
+
+.palo {
+    width: 60px;
+    background-color: #d2b48c;
+}
+
+.punta {
+    width: 20px;
+    background: linear-gradient(to right, #ccc 60%, #00f);
+}
+
+.taco > div {
+    height: 100%;
+}
+
+/*CREAR LAS BOLAS, primero creamos el contendor y después las bolas individualmente*/
+.bola {
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: black;
+    display: flex;
+    font-weight: bold;
+    height: 30px;
+    justify-content: center;
+    position: absolute;
+    width: 30px;
+}
+/*Bola blanca. Aquí añadimos el color y la posición, no se hace con margin sino ajustando la posición directamente porque sino 
+se crearían espacios. Al final he añadido la animación que le corresponde y el delay*/
+.blanca {
+    background-color: white;
+    color: black;
+    /*Posición*/
+    left: 200px;
+    top: 60px;
+    /*Animaciones */
+    animation: moverBlanca 1s forwards;
+    animation-delay: 0.5s; 
+}
+/*Creamos la bola roja de la misma manera que hemos creado la blanca anteriormente, basándonos en la posición de la anterior
+para luego hacer los movimientos*/
+.roja {
+    background-color: red;
+    color: white;
+    top: 30px;
+    left: 300px;
+    animation: moverRoja 2s forwards; 
+    animation-delay: 1s; 
+}
+/*Incluimos los número para hacerlos girar cuando se golpee, por lo que le añadimos la animacion de girar número a ambos y cada
+uno en sus tiempos-*/
+.numeroBlanca {
+    display: inline-block;
+    animation: girarNumero 1s linear;
+    animation-delay: 0.5s; /* desde que empieza a moverse */
+}
+
+.numeroRoja {
+    display: inline-block;
+    animation: girarNumero 2s linear;
+    animation-delay: 1s; /* desde que recibe el golpe */
+}
+
+/*BOTONES*/
+.botonesEjercicio2 {
+    margin-top: 10px;
+}
+
+.botonEjercicio2 {
+    background-color: black;
+    border-radius: 50%;
+    color: greenyellow;
+    height: 50px;
+    width: 50px;
+}
+
+/*MENSAJE: Creamos el diseño del mensaje, he puesto fondo para que se vea mejor el cambio de color, añadimos las animaciones al final como
+anteriormente*/
+#mensaje {
+    background-color: yellowgreen;
+    border-radius: 10px;
+    display: block;
+    font-size: 15px;
+    left: 150px;
+    opacity: 0;
+    padding: 5px 15px;
+    position: absolute;
+    top: 80px;
+    animation: mensajeGolpe 3s forwards;
+    animation-delay: 0.5s; 
+}
+
+/*ANIMACIONES*/
+/*Lo primero es hacer un keyFrame y le damos el nombre de la animación, dentro de esta, he ido poniendo porcentajes
+donde va a ir golpeando poco a poco y despareciendo, para hacer una cosa escalada, no que se haga directamente*/
+
+/*Para el taco, pongo que golpé al 50% de la transición, en left ponemos los pixeles alejados de la parte izquierda del div 
+y conforme aumenta el porcentaje, vamos quitandole opacidad para que desaparezca el taco.*/
+@keyframes moverTaco {
+    0% { left: 0; opacity: 1; }
+    50% { left: 120px; opacity: 1; } 
+    90% { left: 0; opacity: 1; }     
+    100% { left: 0; opacity: 0; }
+}
+
+/*Aquí hacemos lo mismo calculando la distacia y la posición de la bola blanca a la roja, aquí he tenido que subir la 
+bola blanca por eso he empezado alejada 60px del lado superior del div y luego al terminar he bajado a 30, la bola ha subido*/
+@keyframes moverBlanca {
+    0% { left: 200px; top: 60px; }
+    100% { left: 290px; top: 30px; }
+}
+
+/*Para la animación del mensaje, he puesto que cuando aparezca sea de un color amarillo verdoso, y que luego en el 80% cambie
+de color y vaya bajando la opacidad para que desaparezca */
+@keyframes mensajeGolpe {
+    0% {
+        opacity: 0;
+        background-color: yellowgreen;
+    }
+    20% {
+        opacity: 1;
+        background-color: yellowgreen; 
+    }
+    80% {
+        opacity: 1;
+        background-color: black; 
+        color: yellowgreen;
+    }
+    100% {
+        opacity: 0;
+        background-color: black; 
+        color: yellowgreen;
+    }
+}
+
+/*Para mover la roja, lo que he hecho ha sido poner su escala normal al principio y que vaya acercandose al lateral derecho de la 
+mesa, despues en el 50% he reducido la escala para que se haga más pequeña a la vez que cambia su color a azul y en el 100%
+he puesto que vuelva a la mitad de la mesa y recupere su escala normal, pero que mantenga el color azul, si no ponía azul en el 100%
+volvía a ser roja*/
+@keyframes moverRoja {
+    0% {
+        left: 300px;
+        top: 30px;
+        transform: scale(1);
+        background-color: red;
+    }
+    50% {
+        left: 450px;
+        top: 10px;
+        transform: scale(0.5);
+        background-color: blue;
+    }
+    100% {
+        left: 350px;
+        top: 60px; 
+        transform: scale(1); 
+        background-color: blue;
+    }
+}
+
+/*Para que vaya girando, he puesto que al final haya dado dos vuelta, por eso he puesto 720 grados y he usado rotate*/
+@keyframes girarNumero {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(720deg); } 
+}
+
+/*Para cambiar el fondo, lo que he hecho ha sido en el 100% ponerle un background imagen y añadir la descargada, por lo que
+se va a sustituir el fondo.*/
+@keyframes cambiarFondo {
+    0% {
+        background-color: #006400; 
+    }
+    100% {
+        background-image: url('/imagenes/clubBillar.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+}

@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*EJERCICIO 1*/
+
+/*CREAMOS LAS VARIABLES: Lo hacemos con root para que se apliquen a todo el documento en caso de querer usarlas. Las creamos con "--"
+seguido del nombre que queramos */
+:root{
+    --fondo_menu: #473335;
+    --letras_menu:#211F30;
+    --hover_fondo:#FCAA67;
+    --hover_letra:#F8FAE5; 
+}
+
+/* Enlazamos la letra descargada local. He elegido hacerlo al principio para dar claridad al código, usamos @font-face, en font-family elegimos
+el nombre que le queremos dar a nuestra letra y en src ponemos la ruta de la carpeta en la que se encuentra y el formato que tiene.*/
+@font-face {
+    font-family: 'FuenteLocal';
+    src: url('../Fuentes/Garet-Book.otf') format('opentype');
+
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+/* CABECERA */
+/*Lo hacemos con flex, no tenemos que elegir la dirección porque es en fila, con aline y justify centramos todos los elementos y usamos
+la variable que hemos creado con la palabra var() y dentro del paréntesis el nombre de la variable.*/
+#cabecera{
+    align-items: center;
+    background-color: #548687;
+    color: var(--letras_menu);
+    display: flex;
+    justify-content: center;
+}
+/*Dentro de la clase menú,indicamos que queremsos que se ordene en horizontal por lo que no hay que poner la dirección le asignamos un color
+de fondo, un borde, sombra, e incluso usamos una de las variables.*/
+.menu{
+    display: flex;
+    border: solid 1px #211F30;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+    padding: 5px;
+    background-color: var(--fondo_menu);
+    margin: 30px;
+}
+/* Con la clase menú aplicamosel estilo que queremos a los enlaces, poniendo una a seguida. Aquí ponemos que queremos que se ordene en horizontal
+con flex de nuevo, he redondeado un poco los bordes para hacerlo más estético y he usado text-decoration para quitarle el subrayado que 
+muestran los enlaces */
+.menu a {
+    align-items: center;
+    background-color: #ffffc7;
+    border: solid 1px #211F30;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    color: var(--letras_menu);
+    display: flex;
+    justify-content: center;
+    margin: 3px;
+    padding: 5px;
+    padding-left: 150px;
+    padding-right: 150px;
+    text-decoration: none;
+}
+/*Hover lo utilizamos para cambiar el color cuando se pasa el ratón por encima*/
+.menu a:hover {
+    background-color: var(--hover_fondo);
+    color: var(--hover_letra);
+}
+/*Ocultamos el icono de menú hamburguesa para diseños de 620px o más y luego lo mostraremos en el ejercicio 2*/
+.menuHamburguesa{
+    display: none;
+}
+/*CONTENIDOS: Para hacer el grid, lo primero que hacemos es crear un contenedor y dentro de este gestionarlo. Lo he hecho por áereas
+y luego con template-row y column he ajustado el ancho de cada uno.Con grid-gap añadimos un pequeño margen para que quedara más 
+estético*/
+/* contendor */
+.contenedor{
+    display: grid;
+    grid-template-areas: 
+    "aside article"
+    "main article";
+    grid-template-rows: 70% 30%;
+    grid-template-columns: 80% 20%;
+    grid-gap: 5px;
+    margin-top: 5px;
+}
+/*PUBLICIDAD_ Aquí he asignado la parte que le corresponde en el grid y he creado otro, para gestionar la parte de la publicidad*/
+aside{
+    grid-area: aside;
+    align-items: center; 
+    background-color: #B0413E;
+    border-radius: 5px;
+    display: grid;
+    grid-template-areas: 
+    "tituloPublicidad imagenPublicidad"
+    "descripcionPublicidad imagenPublicidad"
+    "boton imagenPublicidad";
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    justify-items: center; 
+    margin-left: 5px;
+}
+
+.tituloPublicidad{
+    grid-area: tituloPublicidad; /*Elegimos la parte que corresponde al grid */
+    color: #FCAA67;
+    font-family: "Staatliches", sans-serif; /*Aquí metemos la fuente que hemos importado directamente desde internet*/
+    margin-top: 10px;
+    text-align: center;
+}
+
+.descripcionPublicidad{
+    grid-area: descripcionPublicidad; /*Elegimos la parte que corresponde al grid */
+    color: #ffffc7;
+    font-family: 'FuenteLocal', 'Times New Roman', Times, serif; /*Aquí elegimos la fuente que hemos importado de manera local más arriba*/
+    font-size: 13px;
+    text-align: justify;
+    width: 800px;
+}
+
+.descripcionPublicidad ul {
+    padding-left: 30px; /*Desplazamos un poco hacia dentro la lista para que quede más estético */
+}
+
+/*Aquí damos la posición al botón*/
+.botonClase {
+    grid-area: boton; /*Elegimos la parte que corresponde al grid */
+    align-self: center;  /* Centra el botón verticalmente dentro del contenedor flex */
+    display: inline-block;  /* Asegura que el botón se muestre como un bloque en línea */
+    justify-self: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/*Aquí creamos el botón que luego utilizaremos en otros lugares. */
+.boton {
+    background-color: #ffffc7;
+    border: solid 1px #473335;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+    color: #473335;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+/*El hover para el botón que luego reutilizaremos en otras secciones. */
+.boton:hover{
+    background-color: #473335;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+    color: #FCAA67;
+}
+
+/*Asignamos la zona en el grid*/
+.imagenPublicidad{
+    grid-area: imagenPublicidad;
+}
+
+/*Manipulamos el estilo de la imágen para que se adapte a lo que queremos.*/
+.imagenPublicidad img{
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(66, 62, 62, 0.5);
+    height: 450px; 
+    width: 350px;
+}
+
+
+/*INFORMACIÓN: La sección siguiente a publicidad, marcamos su posición en el grid que hemos creado en contendor y le damos
+la apariencia que queremos que tenga. Le he redondeado un poco las esquinas para que quedara más integrado. */
+main{
+    grid-area: main;
+    background-color: #FCAA67;
+    border-radius: 5px;
+    color:#F8FAE5;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    text-align: justify;
+}
+
+/*Aquí he metido un id, y desde ahí lo separaremos en las 3 columnas, en count ponemos el número de columnas, en withel ancho, gap es el 
+espacio que hay entre ellas y rule es el tipo de separaciín, le he metido margin para que no esté pegado a los bordes. */
+#contenidoMain{
+    color: #B0413E;
+    column-count: 3;
+    column-width: 30px;
+    column-gap: 30px;
+    column-rule: double 8px #473335;
+    margin:50px;
+}
+
+.tituloContenido{
+    color: #473335;
+    font-family: "Staatliches", sans-serif; /*He usado de nuevo la fuente importada de Internet*/
+}
+
+/*MONITORES: En esta parte indicamos a la parte del grid que corresponde dentro del contenedor, dentro de este he metido un flex para 
+que las tarjetas se dispongan en columnas. */
+
+article{
+    grid-area: article;
+    align-items: center;
+    background-color: #E5E5E5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.tituloMonitores{
+    color: #473335;
+    font-family: "Staatliches", sans-serif; /*He usado de nuevo la fuente importada de Internet*/
+    margin-top: 15px;
+}
+/*Hacemos un flex con dirección column para alinear los elementos dentrod e cada tarjeta y le damos el estilo que más nos guste*/
+.tarjeta {
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    padding: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+    text-align: center;
+}
+/*Usamos las pseudoclases nth-child para alternar los colores, odd serán las impares y even las pares.*/
+.tarjeta:nth-child(odd) {
+    background-color: #6A9A8B; 
+}
+/* Tarjetas pares */
+.tarjeta:nth-child(even) {
+    background-color: #B0413E; 
+}
+
+/*Aquí es donde le damos el perfil a la imagen, para ello usamos outline y metemos los píxeles, el tipo de borde y el color, para que esto
+funcione hay que usar también el border radius, he usado object-fit para que la imagen no se distorsione. Y offset para indicar el espacio
+entre la imagen y el contorno*/
+.tarjeta img {
+    border-radius: 50%; 
+    height: 70px; 
+    margin-bottom: 10px; 
+    object-fit: cover; 
+    outline: 1px solid #FCAA67; /* Perfil (contorno) alrededor de la imagen */
+    outline-offset: 0px; /* Ajusta el espacio entre la imagen y el contorno */
+    width: 70px;
+}
+/*PIE DE PÁGINA: La última sección es el pie de página, aquí usamos flex para ordenar en fila los tres elementos que contiene.*/
+footer {
+    align-items: center; /*Centra verticalmente los elementos dentro del footer*/
+    background-color: #473335;
+    color: #ffffc7;
+    display: flex;
+    justify-content: space-between; /*Se asegura de que haya espacio entre las secciones*/
+    margin-top: 5px;
+    padding: 10px; /* Añadir algo de padding para no pegar los elementos al borde*/
+}
+
+/*Aquí he nombrado los tres títulos y he usado flex 1, que es para que todos los elementos ocupen la misma línea.*/
+#redesSociales h2, #contacto h2, #contenedorNewsletter label {
+    flex: 1;
+    font-family: "Staatliches", sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#contacto {
+    margin-left: 10px;
+}
+/*Para quitar las viñetas a la lista*/
+#contacto ul{
+    list-style-type: none;
+}
+/*Creamos un flex para ordenar los elementos de las redes sociales en vertical y de manera centrada.*/
+#redesSociales {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.iconoClase {
+    align-items: center;
+    color: #ffffc7; 
+    display: flex;
+    justify-content: flex-start; /*Alinea el texto y la imagen al principio.*/
+    text-decoration: none; /*Elimina el subrayado de los enlaces*/
+}
+
+.iconoClase img {
+    margin-right: 10px;
+    height: 25px; 
+    width: 25px;
+}
+/*Aplicamos un flex para alinear en vertical los elementos de newsletter.*/
+#contenedorNewsletter {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+    width: 300px;
+}
+
+/* EJERCICIO 2*/
+/*En media query ponemos el máximo en 620, por lo tanto, todo lo que contenga se aplicará cuando la pantalla mida menos de 620px*/
+@media screen and (max-width: 620px) {
+
+/*CABECERA*/
+/*Anteriormente teníamos el menú hamburguesa oculto por lo que ahora le metemos un flex column para que aparezca en columna con el logo
+cuando el dispositivo tenga las medidas adecuadas.*/
+.menuHamburguesa{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+/*Ocultamos el menu y el icono de login*/
+.menu{
+    display: none;;
+}
+
+.login{
+    display: none;
+}
+
+/*CONTENIDO: aquí con flex hacemos que aparezca en columnas en lugar de el grid que teniamos asignado.*/
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+/*PUBLICIDAD: Cambiamos la apariencia del grid de como lo teníamos ateriormente*/
+aside {
+    grid-template-areas: 
+        "imagenPublicidad tituloPublicidad"
+        "imagenPublicidad descripcionPublicidad"
+        "imagenPublicidad boton"; 
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr 1fr;
+}
+
+/*Aquí tenúa el problema de que el texto, la descripción y el botón no se modelaban a la caja por lo que use el box-sizing  y no fue 
+suficiente, busqué más formas y la que mejor me funcionó fue overflow-wrap para que no se saliera mucho del contenedor*/
+.tituloPublicidad, .descripcionPublicidad, .boton {
+    text-align: center;
+    padding: 5px;
+    width: 100%; 
+    box-sizing: border-box; 
+    overflow-wrap: break-word; 
+}
+
+.imagenPublicidad img{
+    width: 100%;
+    height: auto;
+}
+
+/*ZONA MONITORES: Cambiamos el flex column que tenía asignado por el flex-row, tuve que especificar la dirección porque sino no me funcionaba*/
+article{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tarjeta{
+    width: 45%;
+}
+
+/*PIE DE PÁGINA: Hacemos que el newsLetter desaparezca con display: none y le he dado margen a las redes sociales para alinearlo bien*/
+#contenedorNewsletter{
+    display:none;
+}
+
+#redesSociales{
+    margin-right: 20px;
+}
+}

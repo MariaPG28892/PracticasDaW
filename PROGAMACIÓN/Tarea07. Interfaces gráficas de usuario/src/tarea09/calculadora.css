@@ -1,0 +1,85 @@
+/*Aquí el estilo de la Vbox*/
+.root {
+    -fx-background-color: #3A3A3A;
+    -fx-padding: 10px;
+    -fx-font-family: "Arial";
+    -fx-font-size: 18px;
+    
+}
+/*Corresponde a la parte de la pantalla*/
+.text-field {
+    -fx-background-color: #222222; 
+    -fx-text-fill: white;          
+    -fx-padding: 10px;
+    -fx-font-size: 20px;           
+    -fx-border-radius: 10px; 
+    -fx-background-radius: 10px;
+    -fx-border-color: #444444;    
+    -fx-border-width: 2px;        
+    -fx-font-weight: bold;
+    -fx-alignment: center-right; 
+}
+/*Botones en general, no lo he copiado, lo aprendí en la asignatura de DIW, le añadí sombras para darle profundidad */
+.button {
+    -fx-background-color: white;           
+    -fx-text-fill: #2E2E2E;      
+    -fx-font-size: 20px;                     
+    -fx-background-radius: 50px;              
+    -fx-border-radius: 25px;                             
+    -fx-border-width: 2px;                    
+    -fx-padding: 20px;                        
+    -fx-min-width: 60px;                      
+    -fx-min-height: 60px;                     
+    -fx-alignment: center;   
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 5, 0.5, 2, 2);
+}
+
+.button:hover {
+   -fx-background-color: #F2D675
+}
+
+.button:pressed {
+    -fx-background-color: #E6B800;
+}
+
+/* Estilos específicos para operadores */
+.button.operador {
+    -fx-background-color: #AECBFA; 
+}
+
+.button.operador:hover {
+    -fx-background-color: #80C4E0;
+}
+
+.button.operador:pressed {
+    -fx-background-color: #4A90E2; 
+    -fx-text-fill: white;
+}
+
+/* Estilos específicos para el botón de igual */
+.button.igual {
+    -fx-background-color: #CCF5AC; 
+}
+
+.button.igual:hover {
+    -fx-background-color: #81C784;  
+}
+
+.button.igual:pressed {
+    -fx-background-color: #4CAF50; 
+    -fx-text-fill: white;
+}
+
+/* Estilos específicos para el botón de limpiar */
+.button.limpiar {
+    -fx-background-color: #F28B82; 
+}
+
+.button.limpiar:hover {
+    -fx-background-color: #E57373;
+}
+
+.button.limpiar:pressed {
+    -fx-background-color: #D32F2F;
+    -fx-text-fill: white;
+}

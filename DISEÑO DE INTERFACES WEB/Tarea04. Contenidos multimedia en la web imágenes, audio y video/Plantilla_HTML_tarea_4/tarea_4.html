@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de la Tarea 4</title>
+
+    <style>
+        *{
+            margin: 0;
+        }
+
+        #contenido-audios, #contenido-videos{
+            display: none;
+        }
+
+        header{
+            background-color: #f3c14e;
+        }
+
+        header h1{
+            text-align: center;
+            color: #172e44;
+            padding: 20px 0;
+        }
+
+        nav ul{
+            background-color: #f3c14e;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            background-color: #172e44;
+            border-left: 1px solid #dde0e4;
+            border-radius: 30px 30px 0 0;
+            display: inline;
+            padding: 20px 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav ul li a{
+            color: #dde0e4;
+            font-size: 1.4em;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover{
+            color: #f3c14e !important;
+        }
+
+        nav ul > li:first-child{
+            background-color: #FFFFFF;
+            border-left: none;
+        }
+
+        nav ul > li:first-child a{
+            color: #172e44;
+        }
+
+        main{
+            margin: 20px;
+        }
+
+        h2{
+            margin: 20px 0;
+        }
+
+        p, ul, table{
+            font-size: 1.2em;
+        }
+
+        span{
+            font-weight: bolder;
+            color: #172e44;
+        }
+
+        table{
+            border-collapse: collapse;
+        }
+
+        th, td{
+            border:1px solid black;
+            padding: 5px;
+        }
+
+        table thead tr :first-child{
+            background-color: #FFFFFF;
+            border: none;
+        }
+
+        table td{
+            text-align: center;
+        }
+
+        table thead tr th{
+            background-color: #01B3A7;
+            padding: 10px;
+        }
+
+        table tbody tr th{
+            background-color: #d1f5b5;
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr:nth-child(2n){
+            background-color: #dde0e4;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+
+        function mostrarOcultarContenido(tipoPestana){
+            let tipos = ["imagenes", "audios", "videos"];
+
+            tipos.forEach(function(tipo) {
+                if(tipo == tipoPestana){
+                    document.getElementById("enlace-"+tipo).style.color = "#172e44";
+                    document.getElementById("pestana-"+tipo).style.backgroundColor = "#FFFFFF";
+                    document.getElementById("contenido-"+tipo).style.display = "block";
+                }else{
+                    document.getElementById("enlace-"+tipo).style.color = "#dde0e4";
+                    document.getElementById("pestana-"+tipo).style.backgroundColor = "#172e44";
+                    document.getElementById("contenido-"+tipo).style.display = "none";
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+    <header>
+        <h1>Informe de la tarea 4</h1>
+    </header>
+    <nav>
+        <ul>
+            <li id="pestana-imagenes"><a id="enlace-imagenes" class="enlace" href="#" onclick="mostrarOcultarContenido('imagenes')">IMÁGENES</a></li>
+            <li id="pestana-audios"><a id="enlace-audios" class="enlace" href="#" onclick="mostrarOcultarContenido('audios')">AUDIOS</a></li>
+            <li id="pestana-videos"><a id="enlace-videos" class="enlace" href="#" onclick="mostrarOcultarContenido('videos')">VIDEOS</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- ********** IMÁGENES ********** -->
+        <div id="contenido-imagenes">
+            <h2><u>Aportación en el foro</u></h2>
+            <img src="../Capturas/captura.jpg" alt="Aportación en el foro" width="1100" height="500">
+
+            <h2><u>Logo</u></h2>
+            <p><a href="https://pixabay.com/es/illustrations/p%C3%A9rdida-de-peso-ejercicio-iconos-6990508/">URL del logotipo (creación propia o descargado)</a></p>
+
+            <h2><u>Imagen</u></h2>
+            <p><span>Licencias creative commons: </span>Licencia CC BY-NC 4.0</p>
+            <p><span>Justicicación (restricciones): </span>
+                Esta imagen está bajo una licencia Creative Commons (CC BY-NC 4.0), que restringe su uso comercial. Esto significa 
+                que no se puede utilizar para generar ingresos ni en contextos comerciales. Además, la licencia exige la atribución 
+                adecuada, por lo que es necesario mencionar al autor de la imagen, en este caso Freepik. En la imagen de la tarea, 
+                he incluido tanto el nombre del propietario como la atribución requerida por la licencia.
+            </p>
+
+            <h2><u>Internet</u></h2>
+            <p><a href="https://www.freepik.es/foto-gratis/mujer-usando-su-maqueta-brazalete-telefono_5075096.htm#fromView=search&page=1&position=27&uuid=3db5f09d-4c93-4fef-985e-95fe5724b93e&query=banda+para+movil+para+correr">URL de la imagen (no la URL de la página web principal de la imagen)</a></p>
+
+            <h2><u>Composición</u></h2>
+            <img src="../Capturas/capturaPropiedades.jpg" alt="Captura de pantalla con las propiedades de la imagen" width="1000" height="500">
+
+            <h2><u>Composición 1000</u></h2>
+            <p><span>Medida 1: </span>1000 px anchura</p>
+            <p><span>Medida 2: </span>722 px altura</p>
+
+            <h2><u>Composición 400</u></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Formato del recurso</th>
+                        <th>Dimensiones (Ancho x Alto)</th>
+                        <th>Tamaño (KB o MB). Usar la misma unidad de medida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>logo.svg</th>
+                        <td>.svg</td>
+                        <td>560 x 432 px</td>
+                        <td>8'75KB</td>
+                    </tr>
+                    <tr>
+                        <th>1_Imagen.xxx</th>
+                        <td>.png (La he utilizado para poder usar la transparecia, aunque  podía usar webp también)</td>
+                        <td>500 x 500 px</td>
+                        <td>147KB</td>
+                    </tr>
+                    <tr>
+                        <th>2_Internet.xxx</th>
+                        <td>.jpg</td>
+                        <td>1700 x 1133px</td>
+                        <td>464KB (La imagen la he tenido que reducir porque me ocupaba demasiado la composicion, como 61MG y no podía
+                            ocuparme tanto, lo que he hecho ha sido dejarla a 1700 y así podía aplicar las escalas de la tarea sin problema)</td>
+                    </tr>
+                    <tr>
+                        <th>4_Composicion.xxx</th>
+                        <td>.webp (He usado webp porque no pierde calidad y ocupa mucho menos espacio)</td>
+                        <td>1700 x 1133 px</td>
+                        <td>202KB</td>
+                    </tr>
+                    <tr>
+                        <th>5_Composicion_1000.xxx</th>
+                        <td>.webp</td>
+                        <td>1000 x 722 px</td>
+                        <td>130KB</td>
+                    </tr>
+                    <tr>
+                        <th>6_Composicion_400.xxx</th>
+                        <td>.jpg (Con webp aquí las letras salían borrosas y no definidas así que he usado jpg)</td>
+                        <td>400 x 289 px</td>
+                        <td>50'4KB</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ********** AUDIOS ********** -->
+        <div id="contenido-audios">
+            <h2><u>Información sobre la canción</u></h2>
+            <p><span>Tipo de licencia: </span>La canción se puede utilizar de forma gratuita incluso con fines comerciales. 
+                No requiere atribución, pero no se permite revenderla ni distribuirla de forma independiente. Ideal para proyectos web 
+                por su facilidad de uso y por ser libre de derechos.
+            </p>
+            <p><a href="https://pixabay.com/es/music/late-lost-in-dreams-abstract-chill-downtempo-cinematic-future-beats-270241/">URL de la canción (no la URL de la página web principal de la canción)</a></p>
+            
+            <h2><u>Información sobre 1_audio.mp3 y 2_audio.ogg</u></h2>
+            <p><span>Justifica las decisiones tomadas en los audios (formatos y optimización de ficheros): </span>
+                He utilizado MP3 porque permite almacenar audios con buena calidad, ofrece una excelente compresión y es compatible 
+                con la mayoría de los navegadores.
+                También he utilizado el formato OGG porque es un formato libre, eficiente en la compresión y compatible con la mayoría 
+                de navegadores modernos.
+            </p>
+            
+            <h2><u>Tabla</u></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Formato del recurso</th>
+                        <th>Tamaño (KB o MB). Usar la misma unidad de medida</th>
+                        <th>Duración (expresado en segundos)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Canción descargada</th>
+                        <td>.mp3</td>
+                        <td>5734,4 KB</td>
+                        <td>230 segundos</td>
+                    </tr>
+                    <tr>
+                        <th>1_audio.xxx</th>
+                        <td>.mp3</td>
+                        <td>772 KB</td>
+                        <td>19 segundos</td>
+                    </tr>
+                    <tr>
+                        <th>2_audio.xxx</th>
+                        <td>.ogg</td>
+                        <td>782 KB</td>
+                        <td>19 segundos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+
+        <!-- ********** VIDEOS ********** -->
+        <div id="contenido-videos">
+            <h2><u>Información sobre la composición del video</u></h2>
+            <ul>
+                <li><span>Nombre de la aplicación utilizada para la edición del video: </span>AVS Video Editor</li>
+                <li><span>Nombre de las transiciones que has utilizado: </span>1. Flash oscuro. 2. Película hacia abajo</li>
+                <li>
+                    <span>Captura de pantalla con la línea de tiempo del proyecto:</span>
+                    <br><br>
+                    <img src="../Capturas/capturaVideo.jpg" alt="Linea del tiempo del proyecto" width="1000" height="500">
+                </li>
+            </ul>
+            
+            <h2><u>Información sobre 1_video.xxx y 2_video.xxx</u></h2>
+            <p><span>Justifica las decisiones tomadas en los videos (formatos y optimización de ficheros): </span>
+                He utilizado en primer lugar .mp4, es el formato más compatible con la web y es muy bueno para la compresión 
+                dándole calidad al vídeo y un peso reducido. Tiene una alta compatibilidad con todos los navegadores e incluso
+                diferentes dispositivos.
+                Quería usar .webm, pero la aplicación de vídeo no me lo permitía y no sabía como hacerlo, este formato sería el más 
+                parecido al anterior, de los que disponía lo he guadado en .mkv es bueno en la conversión a otros formatos, compatible
+                con la web y de los ofrecidos es el que más he notado la reducción del peso del vídeo sin afectar a la calidad.
+            </p>
+            
+            <h2><u>Tabla</u></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Formato del recurso</th>
+                        <th>Tamaño (KB o MB). Usar la misma unidad de medida</th>
+                        <th>Duración (expresado en segundos)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Video (Presentación)</th>
+                        <td>.mp4</td>
+                        <td>65KB</td>
+                        <td>4 segundos. Como lo he hecho directamente con la aplicación me ha separado el audio</td>
+                    </tr>
+                    <tr>
+                        <th>Video (Capas)</th>
+                        <td>.mp4</td>
+                        <td>8.357,52 KB</td>
+                        <td>35 segundos</td>
+                    </tr>
+                    <tr>
+                        <th>Video (Lienzo)</th>
+                        <td>.mp4</td>
+                        <td>4.710,4 KB</td>
+                        <td>20 segundos</td>
+                    </tr>
+                    <tr>
+                        <th>1_video.xxx</th>
+                        <td>.mp4</td>
+                        <td>7.833,6 KB</td>
+                        <td>60 segundos</td>
+                    </tr>
+                    <tr>
+                        <th>2_video.xxx</th>
+                        <td>.mkv</td>
+                        <td>13.107,2 KB</td>
+                        <td>60 segundos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+</body>
+</html>

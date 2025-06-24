@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación de la película</title>
+    <script src="votacion.js"></script>
+    <style>
+
+        @font-face {
+            font-family: 'MiFuente'; 
+            src: url('Fuentes/Evil_Empire.otf') format('opentype');
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+            background-image: url('Imagenes/fondoVotacion1.jpg');
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #e6ffe6;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #00FF00;
+            font-size: 50px;
+            font-family: 'Mifuente';
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            width: 500px; 
+            max-width: 80%; 
+            padding: 50px;
+            border: none;
+            background-color: black;
+            border-radius: 8px;
+        }
+
+        .peliculas {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 80px;
+        }
+
+        .peliculas label {
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start; 
+            gap: 10px; 
+            width: 100%;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #e6ffe6;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #e6ffe6;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        textarea:disabled {
+            background-color: #f9f9f9;
+        }
+
+        /*CLASE PARA LOS ERRORES*/
+        .error {
+            border: solid 2px #ff0000;
+            background-color: #ffeeee;
+        }
+        /*CLASE PARA CUANDO SE CORRECTO*/
+        .correcto {
+            border-color: #28a745;
+            background-color: #e6ffe6;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 48%;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            color: black;
+        }
+
+        #enviar {
+            background-color: #00FF00;
+            border: none;
+        }
+
+        #borrar {
+            background-color: #00FF00;
+            border: none;
+        }
+
+        #salida {
+            width: 90%;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .salida-texto {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .descripcionTitulo{
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>ELEGIR LA PELÍCULA CANDIDATA A PEOR PELíCULA</h2>
+    <div class="contenedor">
+        <form id="formulario">
+            <fieldset>
+                <div class="peliculas">
+                    <label><input type="radio" name="pelicula" value="Tiburón, la venganza">TIBURÓN, LA VENGANZA</label>
+                    <label><input type="radio" name="pelicula" value="Velocipastor">VELOCIPASTOR</label>
+                    <label><input type="radio" name="pelicula" value="Alone in the dark">ALONE IN THE DARK</label>
+                    <label><input type="radio" name="pelicula" value="Navidad Sangrienta">NAVIDAD SANGRIENTA</label>
+                    <label><input type="radio" name="pelicula" value="The room">THE ROOM</label>
+                </div>
+                
+                <label for="descripcion" class="descripcionTitulo">Descripción del argumento:</label>
+                <textarea id="descripcion" name="descripcion" minlength="5" disabled></textarea>
+
+                <label for="calificacion">Calificación (0-10):</label>
+                <input type="number" id="calificacion" name="calificacion" min="0" max="10" required>
+
+                <div class="botones">
+                    <button type="submit" id="enviar" name="enviar">Enviar</button>
+                    <button type="button" id="borrar" name="borrar">Borrar</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <div id="salida"></div>
+    </div>
+    
+    
+</body>
+</html>

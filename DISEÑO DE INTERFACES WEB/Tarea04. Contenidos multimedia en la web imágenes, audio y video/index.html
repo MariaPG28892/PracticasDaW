@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiFit</title>
+    <link rel="icon" type="image/x-icon" href="Imagenes/favicon.png">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <!-- Para adaptarlo a las medidas de la página que me piden, lo he metido todo en un contenedor para hacerlo más sencillo-->
+    <div class="contenedor">
+        <header>
+            <div class="contenedorLogo">
+                <img src="Imagenes/logo.svg" class="logo" alt="Logotipo de zapatilla para la empresa de productos de deportes de running">
+            </div>
+            <img src="Imagenes/menu hamburguesa.svg" alt="Menú hamburguesa" class="menuHamburguesa">
+        </header>
+        <nav>
+            <a href="#imagenes">Imágenes</a>
+            <a href="#audio">Audio</a>
+            <a href="#video">Vídeo</a>
+            <a href="Plantilla_HTML_tarea_4/tarea_4.html" target="_blank">Informe</a>
+        </nav>
+
+        <main>
+            <h2 class="titulo">IMÁGENES</h2>
+            <section id="imagenes" class="imagenes">
+                <!--Para usar figcaption usamos la estructura semántica de figure, para poder poner la descripción debajo-->
+                <figure>
+                    <img src="Imagenes/1_Imagen.png" alt="Imagen 1" class="imagen1">
+                    <figcaption>1_Imagen.png</figcaption>
+                </figure>
+            
+                <figure>
+                    <img src="Imagenes/2_internet.jpg" alt="Imagen 2" class="imagen2">
+                    <figcaption>2_Internet.jpg</figcaption>
+                </figure>
+            
+                <figure>
+                    <img src="Imagenes/ 4_Composicion.webp" alt="Composición" class="imagen3">
+                    <figcaption>4_Composicion.webp</figcaption>
+                </figure>
+
+                <figure>
+                    <!--Lo he hecho con picture que me resultaba más fácil e intuitivo-->
+                    <picture>
+                        <!-- Para dispositivos menores de 400px, utilizamos la imagen 6_Composicion_400.xxx -->
+                        <source media="(max-width: 399px)" srcset="Imagenes/6_Composicion_400.jpg">
+                        <!-- Para dispositivos mayores o iguales de 400px, utilizamos la imagen 5_Composicion_1000.xxx -->
+                        <source media="(min-width: 400px)" srcset="Imagenes/5_Composicion_1000.webp">
+                        <!-- Aquí ponemos la imágen por defecto -->
+                        <img src="Imagenes/5_Composicion_1000.webp" alt="Composición responsive" class="imagen4">
+                    </picture>
+                    <figcaption>Responsive</figcaption>
+                </figure>
+            </section>
+
+            <section id="audio">
+            <h2 class="titulo">Reproductor de Audio</h1>
+
+            <!-- Reproductor de audio, la manera más sencilla que encontré fue esta -->
+            <div class="audio">
+                <audio controls>
+                    <source src="Audio/1_audio.mp3" type="audio/mp3">
+                    <source src="Audio/2_audio.ogg" type="audio/ogg">
+                    <!--Utilicé este error para ver si me lo soportaba en varios navegadores-->
+                    Error. El navegador no soporta el audio.
+                </audio>
+            </div>
+
+            </section>
+            
+            <section id="video">
+                <h2 class="titulo">Reproductor de Video</h2>
+                <div class="video">
+                <!-- Reproductor de Video con formato MP4 y MKV. En poster he utilizdo una imagen en negro-->
+                <video id="video1" poster="Imagenes/Color_negro.jpg" preload="metadata" width="640" height="360">
+                    <source src="Video/1_video.mp4" type="video/mp4">
+                    <source src="Video/2_video.mkv" type="video/mkv">
+                    <!--He hecho lo mismo que en el audio para probar en varios navegadores-->
+                    Error. El navegador no soporta el vídeo.
+                </video>
+            
+                <!-- Botones, he usado símbolos para que quedara más estético y los he relacionado con eventos con javaScript -->
+                <div class="botonesVideo">
+                    <button class="circulo" onclick="iniciar()">&#9658;</button>
+                    <button class="circulo" onclick="pausar()">&#10074;&#10074;</button>
+                    <button class="circulo" onclick="parar()">&#9632;</button>
+                    <button class="circulo" onclick="subirVolumen()">+</button>
+                    <button class="circulo" onclick="bajarVolumen()">-</button>
+                    <button class="cuadrado" onclick="mostrarDuracion()">Mostrar Duración</button>
+                    <button class="cuadrado" onclick="mostrarVolumen()">Mostrar Volumen</button>
+                </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="contenedorFooter imagenFooter">
+                <h3>Imágenes</h3>
+                <p>GIMP</p>
+            </div>
+
+            <div class="contenedorFooter audioFooter">
+                <h3>Audio</h3>
+                <p>AVS Audio Editor</p>
+            </div>
+
+            <div class="contenedorFooter videoFooter">
+                <h3>Vídeo</h3>
+                <p>AVS Video Editor</p>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+    <script>
+        // Obtener el reproductor de video
+        var repro_video = document.getElementById("video1");
+
+        // Iniciar reproducción
+        function iniciar() {
+            repro_video.play();
+        }
+
+        // Pausar reproducción
+        function pausar() {
+            repro_video.pause();
+        }
+
+        // Detener reproducción y volver al inicio
+        function parar() {
+            repro_video.pause();
+            repro_video.currentTime = 0;
+        }
+
+        // Subir volumen
+        function subirVolumen() {
+            if (repro_video.volume < 1) {
+                repro_video.volume = repro_video.volume + 0.1;
+            }
+        }
+
+        // Bajar volumen
+        function bajarVolumen() {
+            if (repro_video.volume > 0) {
+                repro_video.volume = repro_video.volume - 0.1;
+            }
+        }
+
+        // Mostrar la duración del video
+        function mostrarDuracion() {
+            alert("La duración del video es de: " + repro_video.duration + " segundos");
+        }
+
+        // Mostrar el volumen actual
+        function mostrarVolumen() {
+            alert("El volumen tiene el siguiente valor: " + repro_video.volume + " sobre 1");
+        }
+    </script>
+</html>

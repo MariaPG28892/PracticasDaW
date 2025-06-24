@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ejercicio1estilos.css">
+    <title>Ejercicio 1. Menú de dos niveles.</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- Menú hamburguesa -->
+            <input type="checkbox" id="menu_hamburguesa" class="menu_hamburguesa" aria-hidden="true">
+            <!--tabindex para que se seleccione de forma ordenada, le hemos puesto un for relacionar el menu con su etiqueta, le asignamos 
+            una tecla rápida con accesskey -->
+            <label id="label_menu_hamburguesa" for="menu_hamburguesa" class="icono_hamburguesa" tabindex="1" 
+            aria-label="Menú de navegación" aria-controls="menu" aria-expanded="false" accesskey="m">
+                <img src="Imagenes/menuHamburguesa.png" alt="Icono de hamburguesa para abrir el menú de navegación" class="imagenHamburguesa">
+                <!--Texto visible solo para los lectores de pantalla-->
+                <span class="ocultar">Menú de navegación</span>
+            </label>
+    
+            <!-- Menú de navegación -->
+            <ul class="menu_principal" id="menu_principal" aria-label="Enlaces menú de navegación">
+                <!--A los elementos principales del menú le he asignado teclas rápidas, en este primero como no tiene nada asignado le 
+                añadimos index para que nos lleve a la misma página- En todos los demás he incluido las páginas corresponidentes y con
+                aria label he descrito donde nos llevarían. He usado target="_blank" para que abra nuevas páginas cuando le damos a los enlaces-->
+                <li><a href="index_MPG.html" aria-label="enlace para ir a la sección club" accesskey="c">Club</a>
+                    <ul>
+                        <li><a href="https://www.funkify.org/simulators/" aria-label="Enlace para ir a la historia del club" target="_blank">Historia</a></li>
+                        <li><a href="https://www.deque.com/axe/" aria-label="Enlace para ir a la sección socios" target="_blank">Socios</a></li>
+                    </ul>
+                </li>
+    
+                <li><a href="index_MPG.html" aria-label="Enlace para ir a las noticias" accesskey="n">Noticias</a>
+                    <ul>
+                        <li><a href="https://diegoamorin.com/principios-usabilidad-tognazzini/" aria-label="Enlace para ir a las ultimas noticias" target="_blank">Últimas noticias</a></li>
+                        <li><a href="https://es.semrush.com/blog/usabilidad-web-principios-jakob-nielsen/" aria-label="Enlace para ir a la revista" target="_blank">Revista</a></li>
+                    </ul>
+                </li>
+    
+                <li><a href="index_MPG.html" aria-label="Enlace para ir a la sección secciones" accesskey="s">Secciones</a>
+                    <ul>
+                        <li><a href="https://fastercapital.com/es/palabra-clave/navegaci%C3%B3n-consistente.html" aria-label="enlace para atletismo" target="_blank">Atletismo</a></li>
+                        <li><a href="https://keepcoding.io/blog/persistencia-de-datos-en-el-navegador/" aria-label="enlace para natación" target="_blank">Natación</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Karate" aria-label="enlace para kárate" target="_blank">Kárate</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- Script para cambiar el estado del menú hamburguesa, para que se abra cuando pulsamos la imagen de este.-->
+        <script>
+            document.getElementById('label_menu_hamburguesa').addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                event.preventDefault(); // Prevenir el comportamiento por defecto
+                document.getElementById('menu_hamburguesa').click(); 
+            }
+            });
+        </script>
+    </header>
+</body>
+</html>

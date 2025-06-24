@@ -1,0 +1,15 @@
+.cuatro{
+    grid-area: ejercicio4;
+}
+
+.botonIniciar {
+    background-color: black;
+    border: 2px solid yellowgreen;
+    color: yellowgreen;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 250px;
+  }

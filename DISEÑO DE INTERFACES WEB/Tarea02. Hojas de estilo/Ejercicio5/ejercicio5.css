@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/*
+Voy a hacer un mixins para la letra y el color de la letra, ya que se usa en varias ocasiones, se piden juntas, para ellos especifico
+en los parámetros la letra y el color.
+*/
+body {
+  background-color: #FCFCFC;
+  color: #000000;
+}
+
+/*
+En el header, en principio usamos el include para la letra y el color, asignando las variables que deseamos. Y luego, anidamos dentro de 
+este el título y el párrafo.
+*/
+header {
+  display: flex;
+  gap: 80px;
+  justify-content: space-between;
+  background-color: #280a47;
+  font-family: "Roboto Flex", sans-serif;
+  color: #FFFFFF;
+}
+header h1 {
+  font-family: "Cabin";
+  font-size: 36px;
+  font-weight: 700;
+  /*
+  Intenté hacerlo así, como se explicaba en clase:
+  font:{
+      size: 36px;
+      weight: 700;
+  }
+  Pero me daba error, no sé si es que solo se puede hacer en casos concretos o es que lo he puesto mal.
+  */
+}
+header p {
+  font-size: 18px;
+}
+
+/*
+Dentro del main, metemos la sección y dentro de este el título. Dentro de la pseudo-clase he usado una variable de fondo y dentro del 
+titulo he usado el mixins soloLetra, que le aplicaría el estilo de la letra.
+*/
+main section {
+  font-family: "Noto Sans", sans-serif;
+  /*
+  Aquí utilicé section:nth-child(even), pero en el css me aparecía repetida la palabra section y en la tarea solo lo ponía una vez, estuve
+  buscando porque pasaba y la solución que encontré fue poner & para que sea una referencia para contener el contexto del elemento padre.
+  Funcionaría igual, pero para que me saliera igual que en la tarea he puesto &.
+  */
+}
+main section:nth-child(even) {
+  background-color: #f3f3f3;
+}
+main section h1 {
+  font-family: "Cabin";
+  font-size: 28px;
+}
+
+/*
+En el pie de página lo que le he asignado es la variable de color_fondo que también la usábamos en la cabecera y el mixins donde se 
+aplica la letra y el color. Dentro del título del footer he metido un mixins de solo letra para establecer la deseada.
+*/
+footer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #280a47;
+  font-family: "Roboto Flex", sans-serif;
+  color: #FFFFFF;
+}
+footer h2 {
+  font-family: "Cabin";
+  font-size: 240px;
+  font-weight: 500;
+  /*
+  Aquí de nuevo intenté usar lo de clase:
+      font:{
+          size: 240px;
+          weight: 500;
+      }
+  Pero de nuevo me daba error.
+  */
+}/*# sourceMappingURL=ejercicio5.css.map */
