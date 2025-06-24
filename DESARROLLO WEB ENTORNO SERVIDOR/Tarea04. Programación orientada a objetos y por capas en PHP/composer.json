@@ -1,0 +1,21 @@
+{
+    "name": "srv/dwes04",
+    "type": "project",
+    "authors": [
+        {
+            "name": "María Palomares Gallo"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "smarty/smarty": "4.5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "dwes04\\":"src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

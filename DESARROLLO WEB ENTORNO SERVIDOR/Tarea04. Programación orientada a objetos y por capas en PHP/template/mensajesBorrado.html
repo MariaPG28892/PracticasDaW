@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de Borrado</title>
+    <style>
+        body { 
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px; 
+        }
+        h2 { 
+            color: darkcyan; 
+        }
+
+        button{
+            background-color: gray; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <h2>Libro Borrado</h2>
+    <!--Metemos el mensaje de si se ha borrado el libro o si hay algún error-->
+    <p class="mensaje">{$mensaje}</p>
+    <br>
+    <!--He añadido un botón enlace para volver al listado una vez que ya se ha borrado y no tener que cambiar la url-->
+    <a href="index.php" style="text-decoration: none;">
+        <button type="button">Volver al listado</button>
+    </a>
+</body>
+</html>

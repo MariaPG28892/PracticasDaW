@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar libro</title>
+    <style>
+        button{
+            margin-top: 10px;
+            background-color: gray; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <!--Si hay errores hacemos un for each para mostrarlos en color rojo, ya que errores es un array y lo ponemos en una lista-->
+    {if $errores}
+    <ul>
+        {foreach from=$errores item=error}
+            <li style="color: red;">{$error}</li>
+        {/foreach}
+    </ul>
+    {/if}
+
+    <!--Por el contrario si hay mensaje, lo compatimos aquí-->
+    {if $mensaje}
+        <p style="color: green;">{$mensaje}</p>
+    {/if}
+
+    <!--He puesto dos enlaces, uno para crear un libro nuevo y otro para volver al listado-->
+    <a href="index.php?accion=nuevo_libro_form_MPG" style="text-decoration: none;">
+        <button type="button">Añadir Nuevo Libro</button>
+    </a>
+    <a href="index.php" style="text-decoration: none;">
+        <button type="button">Volver al listado</button>
+    </a>
+</body>
+</html>
+

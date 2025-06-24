@@ -1,0 +1,41 @@
+<!-- confirmar_borrado.tpl -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmar Borrado</title>
+  <style>
+    body { 
+        font-family: 'Times New Roman', Times, serif;
+        margin: 20px; 
+    }
+    label { 
+        margin-right: 10px; 
+    }
+    h2{
+        color: darkcyan; 
+    }
+  </style>
+</head>
+<body> 
+    <h2>Confirmar Borrado</h2>
+    <p>¿Estás seguro de que deseas eliminar el libro con ID: {$id}?</p>
+    <!--Formulario para hacer el checkbox, lo mandamos a borrar libros con método post-->
+    <form action="index.php?accion=borrar_libro_MPG" method="post" style="display: flex; gap: 10px; align-items: center;">
+        <!--Guardamos el id también-->
+        <input type="hidden" name="id" value="{$id}">
+        <label>
+            <input type="checkbox" name="confirmacion" value="si"> Confirmar
+        </label>
+        <br><br>
+        <!--De nuevo he añadido dos botones uno para borrar y otro para cancelar, he incluido el estilo en la misma etiqueta para no
+        hacer el código más largo con el css.-->
+        <input type="submit" value="Aceptar" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+        
+        <a href="index.php" style="text-decoration: none;">
+        <button type="button" style="background-color: gray; color: white; border: none; padding: 5px 10px; cursor: pointer;">Cancelar</button>
+      </a>
+    </form>
+</body>
+</html>
+  

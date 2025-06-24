@@ -1,0 +1,126 @@
+/* He creado una nueva carperta y he hecho un css para aplicar los estilos a la página*/
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+header, footer {
+    text-align: center;
+    width: 100%;
+    background: #ddd;
+    padding: 10px;
+}
+
+main {
+    width: 100%;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+nav {
+    text-align: center; 
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: coral;
+}
+
+td {
+    background-color: bisque;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="submit"]{
+    background-color: coral;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button {
+    background-color: coral;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+button:hover {
+    background-color: darkorange;
+}

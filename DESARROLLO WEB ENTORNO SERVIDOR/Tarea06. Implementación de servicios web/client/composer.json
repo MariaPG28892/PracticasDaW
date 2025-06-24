@@ -1,0 +1,17 @@
+{
+    "name": "mariq/client",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mariq\\Client\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "María Palomares Gallo"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}

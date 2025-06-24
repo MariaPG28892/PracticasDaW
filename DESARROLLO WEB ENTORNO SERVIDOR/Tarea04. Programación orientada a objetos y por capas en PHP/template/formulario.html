@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Libros</title>
+    <style>
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            margin: 20px; 
+        }
+        h2 { 
+            color: darkcyan; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+        }
+        th, td { 
+            border: 1px solid black; 
+            padding: 8px; 
+            text-align: center; 
+        }
+        th { 
+            background-color: darkcyan; 
+            color: antiquewhite; 
+            text-align: center;
+        }
+        td { 
+            background-color: antiquewhite;
+        }
+        form { 
+            margin-bottom: 20px; 
+        }
+        button{
+            margin-top: 20px;
+            background-color: gray; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            cursor: pointer; 
+        }
+        input[type="submit"] { 
+            background-color: gray; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Listado de Libros</h2>
+
+    <!-- Formulario para ordenar por fecha de actualización o creacion-->
+    <form method="post" action="index.php">
+        <label for="seleccion">Ordenar por:</label>
+        <select name="seleccion" id="seleccion">
+            <option value="actualizacion">Fecha de Actualización</option>
+            <option value="creacion">Fecha de Creación</option>
+        </select>
+        <input type="submit" value="Ordenar">
+    </form>
+
+    <!-- Mostrar mensaje si no hay libros que mostrar de la base de datos. -->
+    {if empty($libros)}
+        <p>No hay libros en la base de datos.</p>
+    {else}
+        <!-- Tabla con los libros -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ISBN</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año de publicación</th>
+                    <th>Páginas</th>
+                    <th>Ejemplares disponibles</th>
+                    <th>Fecha de Creación</th>
+                    <th>Fecha de Actualización</th>
+                    <th>BORRAR LIBRO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Hacemos un for each para ir sacando los libros uno a uno e ir sacando los getters de información de cada uno-->
+                {foreach from=$libros item=libro}
+                    <tr>
+                        <td>{$libro->getId()}</td>
+                        <td>{$libro->getIsbn()}</td>
+                        <td>{$libro->getTitulo()}</td>
+                        <td>{$libro->getAutor()}</td>
+                        <td>{$libro->getAnioPublicacion()}</td>
+                        <td>{$libro->getPaginas()}</td>
+                        <td>{$libro->getEjemplaresDisponibles()}</td>
+                        <td>{$libro->getFechaCreacion()}</td>
+                        <td>{$libro->getFechaActualizacion()}</td>
+                        <td>
+                            <!-- Formulario para borrar el libro -->
+                            <form action="index.php?accion=borrar_libro_MPG" method="post">
+                                <input type="hidden" name="id" value="{$libro->getId()}">
+                                <input type="submit" value="Borrar">
+                            </form>
+                        </td>                
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    {/if}
+
+    <!--Enlace para crear un nuevo libro-->
+    <a href="index.php?accion=nuevo_libro_form_MPG" style="text-decoration: none;">
+        <button type="button">Añadir Nuevo Libro</button>
+    </a>
+
+</body>
+</html>
